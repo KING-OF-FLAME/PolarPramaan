@@ -1,0 +1,202 @@
+{
+  "ranAt": "2026-09-25T12:21:30.971Z",
+  "corpus": "1977 public evidence spans",
+  "mode": "lexical retrieval (PostgreSQL FTS), extractive answers, no LLM",
+  "hitAt5": "17/20 (85%)",
+  "answeredWithClaims": "19/20",
+  "citationValidity": "74/74",
+  "outOfCorpusRefused": "10/10",
+  "humanCheckedSupport": "not measured automatically; see docs/EVALUATION.md for the manual check procedure",
+  "rows": [
+    {
+      "q": "When were the first Maitri station huts completed?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 3
+    },
+    {
+      "q": "Where is Maitri station located?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "Since when has Bharati research station been operational?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "How many personnel can Bharati station host?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 2
+    },
+    {
+      "q": "When was the Himadri Arctic research station inaugurated?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "Where is India's Arctic station Himadri located?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "When was NCPOR originally established as NCAOR?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 1
+    },
+    {
+      "q": "During which expedition was Dakshin Gangotri established?",
+      "hitRank": 3,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "How long did it take to build Dakshin Gangotri station?",
+      "hitRank": null,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "When did India become a Consultative Party to the Antarctic Treaty?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 2
+    },
+    {
+      "q": "What was the Arctic sea ice extent in September 2012?",
+      "hitRank": 3,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "Antarctic sea ice extent in February 2023",
+      "hitRank": 2,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "What correction was made to the SA Agulhas II sea ice dataset positions?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 2
+    },
+    {
+      "q": "What licence covers the SA Agulhas II Antarctic sea ice observations?",
+      "hitRank": null,
+      "status": "answered",
+      "claims": 2
+    },
+    {
+      "q": "When did the drastic decline in Southern Ocean sea ice begin?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "How did September 2024 Arctic sea ice extent rank in the satellite record?",
+      "hitRank": 3,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "What fraction of Arctic sea ice is now seasonal?",
+      "hitRank": 4,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "When did Arctic sea ice reach its maximum extent in 2019?",
+      "hitRank": 1,
+      "status": "answered",
+      "claims": 5
+    },
+    {
+      "q": "Glacier mass balance in the Lahaul and Spiti region",
+      "hitRank": null,
+      "status": "insufficient",
+      "claims": 0
+    },
+    {
+      "q": "Which Russian station is close to Maitri?",
+      "hitRank": 2,
+      "status": "answered",
+      "claims": 2
+    },
+    {
+      "q": "What is the population of Mumbai?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "Who won the cricket world cup?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "What is the price of bitcoin today?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "When did the Perseverance rover land on Mars?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "How many tigers live in the Sundarbans?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "What is the recipe for biryani?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "Who is the prime minister of Japan?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "How effective are COVID-19 vaccines?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "What is the GDP growth of India this quarter?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    },
+    {
+      "q": "Which team won the Tokyo Olympics hockey gold?",
+      "unanswerable": true,
+      "status": "insufficient",
+      "claims": 0,
+      "topRetrieved": null
+    }
+  ]
+}

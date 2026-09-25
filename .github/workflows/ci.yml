@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    paths-ignore: ['data/snapshots/**', 'docs/**', '*.md']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - name: Snapshot integrity + parser checks
+        run: pnpm data:verify
+      - name: Unit and database tests (PGlite, real snapshot subset)
+        run: pnpm test
+      - run: pnpm build
+      - name: Browser E2E (hero sequence)
+        run: |
+          pnpm exec playwright install --with-deps chromium
+          pnpm test:e2e
+      - name: Client bundle secret scan
+        run: node scripts/scan-client-bundle.mjs

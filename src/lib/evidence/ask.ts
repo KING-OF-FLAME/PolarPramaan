@@ -45,10 +45,24 @@ export function quoteIsValid(quote: string, spanText: string): boolean {
   return q.length >= 8 && normalizeForQuote(spanText).includes(q);
 }
 
-function relevant(hits: SpanHit[], question: string): SpanHit[] {
+const QUESTION_WORDS = new Set(['What', 'When', 'Where', 'Who', 'Whom', 'Why', 'How', 'Which', 'Is', 'Are', 'Was', 'Were', 'Did', 'Does', 'Do', 'Can', 'Could', 'Should', 'The', 'A', 'An', 'In', 'On', 'Of', 'For', 'Tell', 'Show', 'Give', 'List', 'Explain']);
+
+/** Proper-noun anchors: capitalised words the question depends on (e.g. "Japan", "Maitri"). */
+export function anchors(question: string): string[] {
+  return [...new Set((question.match(/\b[A-Z][A-Za-z\u00C0-\u017F-]{1,}\b/g) || []).filter((w) => !QUESTION_WORDS.has(w)).map((w) => w.toLowerCase()))];
+}
+
+export function relevant(hits: SpanHit[], question: string): SpanHit[] {
   const n = contentTerms(question).length;
   const need = n <= 2 ? 1 : MIN_COVERAGE;
-  return hits.filter((h) => h.coverage >= need - 1e-9);
+  const req = anchors(question);
+  return hits.filter((h) => {
+    if (h.coverage < need - 1e-9) return false;
+    if (!req.length) return true;
+    const hay = `${h.recordTitle} ${h.heading ?? ''} ${h.text}`.toLowerCase();
+    // At least half of the proper-noun anchors must literally appear in the passage or its record title.
+    return req.filter((a) => hay.includes(a)).length >= Math.ceil(req.length / 2);
+  });
 }
 
 function sentences(text: string): string[] {

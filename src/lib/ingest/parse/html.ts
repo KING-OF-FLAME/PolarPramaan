@@ -43,6 +43,8 @@ export function htmlToBlocks(html: string): TextBlock[] {
   let m: RegExpExecArray | null;
   while ((m = re.exec(doc))) {
     const tag = m[1].toLowerCase();
+    // Navigation/related-link lists: an element whose whole content is a single link is not evidence.
+    if (!tag.startsWith('h') && /^\s*<a\b[^>]*>[\s\S]*?<\/a>\s*$/i.test(m[3]) && (m[3].match(/<a\b/gi) || []).length === 1) continue;
     const text = stripTags(m[3]);
     if (!text) continue;
     if (tag.startsWith('h')) {

@@ -23,7 +23,8 @@ export default async function Ingest({ searchParams }: { searchParams: Promise<{
   } catch {
     m = null;
   }
-  const ageDays = m ? Math.floor((Date.now() - Date.parse(m.generatedAt)) / 86400000) : null;
+  const [{ age }] = await db.query<{ age: number | null }>(`select floor(extract(epoch from (now() - $1::timestamptz)) / 86400)::int age`, [m?.generatedAt ?? null]);
+  const ageDays = m ? age : null;
   return (
     <div>
       <PageHeader title="Ingest & Source Health" lead="Imports run from the hashed snapshot (pnpm ingest:bootstrap). The snapshot is refreshed by the “Snapshot real sources” GitHub Actions workflow, which reaches the official provider endpoints." />

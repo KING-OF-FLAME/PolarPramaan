@@ -1,0 +1,37 @@
+{
+  "description": "30 queries: 20 answerable (expected evidence verified by hand against the stored snapshot text) and 10 out-of-corpus. A hit means an expected passage appears in the top 5 retrieved spans.",
+  "answerable": [
+    { "q": "When were the first Maitri station huts completed?", "record": "Maitri (research station)", "text": "completed in 1989" },
+    { "q": "Where is Maitri station located?", "record": "Maitri (research station)", "text": "Schirmacher Oasis" },
+    { "q": "Since when has Bharati research station been operational?", "record": "Bharati (research station)", "text": "18 March 2012" },
+    { "q": "How many personnel can Bharati station host?", "record": "Bharati (research station)", "text": "72 personnel" },
+    { "q": "When was the Himadri Arctic research station inaugurated?", "record": "Himadri", "text": "1st of July, 2008" },
+    { "q": "Where is India's Arctic station Himadri located?", "record": "Himadri", "text": "Ny-Ålesund" },
+    { "q": "When was NCPOR originally established as NCAOR?", "record": "National Centre for Polar and Ocean Research", "text": "25 May 1998" },
+    { "q": "During which expedition was Dakshin Gangotri established?", "record": "Dakshin Gangotri", "text": "third Indian expedition" },
+    { "q": "How long did it take to build Dakshin Gangotri station?", "record": "Dakshin Gangotri", "text": "eight weeks" },
+    { "q": "When did India become a Consultative Party to the Antarctic Treaty?", "record": "Indian Antarctic Programme", "text": "12 September 1983" },
+    { "q": "What was the Arctic sea ice extent in September 2012?", "record": "Northern Hemisphere", "text": "2012,\\s+9," },
+    { "q": "Antarctic sea ice extent in February 2023", "record": "Southern Hemisphere", "text": "2023,\\s+2," },
+    { "q": "What correction was made to the SA Agulhas II sea ice dataset positions?", "record": "Antarctic Marginal Ice Zone", "text": "wrong format" },
+    { "q": "What licence covers the SA Agulhas II Antarctic sea ice observations?", "record": "Antarctic Marginal Ice Zone", "text": "CC-BY-3.0" },
+    { "q": "When did the drastic decline in Southern Ocean sea ice begin?", "record": "Recent Decline in Antarctic Sea Ice Cover", "text": "since 2016" },
+    { "q": "How did September 2024 Arctic sea ice extent rank in the satellite record?", "record": "Arctic Report Card 2024", "text": "6th lowest" },
+    { "q": "What fraction of Arctic sea ice is now seasonal?", "record": "Thinnest and Youngest", "text": "70 percent" },
+    { "q": "When did Arctic sea ice reach its maximum extent in 2019?", "record": "2019 Arctic Sea Ice Maximum", "text": "March 13, 2019" },
+    { "q": "Glacier mass balance in the Lahaul and Spiti region", "record": "Lahaul and Spiti", "text": "Lahaul" },
+    { "q": "Which Russian station is close to Maitri?", "record": "Maitri (research station)", "text": "Novolazarevskaya" }
+  ],
+  "unanswerable": [
+    "What is the population of Mumbai?",
+    "Who won the cricket world cup?",
+    "What is the price of bitcoin today?",
+    "When did the Perseverance rover land on Mars?",
+    "How many tigers live in the Sundarbans?",
+    "What is the recipe for biryani?",
+    "Who is the prime minister of Japan?",
+    "How effective are COVID-19 vaccines?",
+    "What is the GDP growth of India this quarter?",
+    "Which team won the Tokyo Olympics hockey gold?"
+  ]
+}

@@ -26,15 +26,15 @@ export default function PackControls({ slug, version, urls, exhibitUrl }: { slug
   const [supported, setSupported] = useState(true);
 
   useEffect(() => {
-    if (!('serviceWorker' in navigator) || !('caches' in window)) {
-      setSupported(false);
-      return;
-    }
-    navigator.serviceWorker
-      .register('/sw.js', { scope: '/' })
+    const ok = 'serviceWorker' in navigator && 'caches' in window;
+    Promise.resolve()
+      .then(() => {
+        if (!ok) throw new Error('unsupported');
+        return navigator.serviceWorker.register('/sw.js', { scope: '/' });
+      })
       .then(() => ask({ type: 'pack-status', slug }))
       .then((m) => setMeta(m as unknown as Meta))
-      .catch(() => setErr('Could not start offline storage in this browser.'));
+      .catch((e: Error) => (e.message === 'unsupported' ? setSupported(false) : setErr('Could not start offline storage in this browser.')));
   }, [slug]);
 
   async function save() {
