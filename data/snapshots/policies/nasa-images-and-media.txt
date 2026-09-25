@@ -1,6 +1,6 @@
 SOURCE: https://www.nasa.gov/nasa-brand-center/images-and-media/
-RETRIEVED: 2026-09-25T11:23:29.964Z
-SHA256(raw): 3d0e5cd33cabc3e135f2c5228d25a405bd0401c6edea5db152dfb19963a16849
+RETRIEVED: 2026-09-25T11:25:00.339Z
+SHA256(raw): bc4313938aceab4b2858c9d58d81ff9f2552c20b401e0e2fe3afdd0067f21d64
 
 Guidelines for using NASA Images and Media Guidelines 
  Explore 

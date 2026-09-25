@@ -1,7 +1,7 @@
 SOURCE: https://ncpor.res.in/pages/display/33-copyright-policy
 LINK TEXT: Copyright Policy
-RETRIEVED: 2026-09-25T11:23:36.685Z
-SHA256(raw): 894fd8a85df7151d0c7d4084ee67b36ec449e594a3828bbe502cb4eab816f7e0
+RETRIEVED: 2026-09-25T11:25:06.755Z
+SHA256(raw): 5ee523adc745828b9df05de6bf8608f7dcccbc090a0c9d93c7e4d0968b54dd10
 
 Copyright Policy: Copyright Policy 
  JavaScript must be enabled in order for you to use the Site in standard view. However, it seems JavaScript is either disabled or not supported by your browser. To use standard view, enable JavaScript by changing your browser options, then try again .
@@ -88,5 +88,5 @@ Copyright Policy: Copyright Policy
  Accessibility Options 
  Accessibility Statement 
  RSS Feed 
- 0021074692 
+ 0021074711 
  Contents of this website is published and managed by NCPOR , Government Of India. For any queries regarding this website please contact Web Master.

@@ -1,6 +1,6 @@
 SOURCE: https://nsidc.org/data/g02135/versions/4
-RETRIEVED: 2026-09-25T11:23:29.923Z
-SHA256(raw): 6f91c974eaf1cfe2ce6816154d9dbb6679d844b346d0c5c4eb3fe123d4513eaf
+RETRIEVED: 2026-09-25T11:25:00.301Z
+SHA256(raw): f6bb08c590c5527184f9c2ecdbe9d8bb8716a3f2a9e7f5111abac1c8a9384efa
 
 Sea Ice Index, Version 4 | National Snow and Ice Data Center 
  Sea Ice Index Version 4 has been released. For details, see the NSIDC news announcement: New version release: NOAA/NSIDC Sea Ice Index, Version 4 .

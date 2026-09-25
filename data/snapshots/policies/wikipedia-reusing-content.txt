@@ -1,5 +1,5 @@
 SOURCE: https://en.wikipedia.org/wiki/Wikipedia:Reusing_Wikipedia_content
-RETRIEVED: 2026-09-25T11:23:30.757Z
+RETRIEVED: 2026-09-25T11:25:01.038Z
 SHA256(raw): b39339b5edb6a6eb2f6239613115f5b7db2138ebb5ce8706128a2857360ecb2f
 
 Wikipedia:Reusing Wikipedia content - Wikipedia 

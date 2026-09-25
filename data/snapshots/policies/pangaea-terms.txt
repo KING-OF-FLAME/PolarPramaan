@@ -1,5 +1,5 @@
 SOURCE: https://www.pangaea.de/about/terms.php
-RETRIEVED: 2026-09-25T11:23:30.718Z
+RETRIEVED: 2026-09-25T11:25:00.925Z
 SHA256(raw): b96f727b81b555342fc5f743a926bd44a40424098c14ee6fba64a9d56321e31a
 
 Terms of Use &ndash; Data Publisher for Earth & Environmental Science 

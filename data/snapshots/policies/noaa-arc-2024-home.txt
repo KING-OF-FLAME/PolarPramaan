@@ -1,5 +1,5 @@
 SOURCE: https://arctic.noaa.gov/report-card/report-card-2024/
-RETRIEVED: 2026-09-25T11:23:32.108Z
+RETRIEVED: 2026-09-25T11:25:02.578Z
 SHA256(raw): d5df09a16e9139ca37f228b34ab0e7fc09b073997216feb9d4cf4eff7787869f
 
 Report Card 2024 - NOAA Arctic 
