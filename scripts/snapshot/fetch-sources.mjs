@@ -174,6 +174,8 @@ async function nasa() {
     }
   }
   for (const id of videoIds) {
+    // Asset list (verifies playable file URLs instead of guessing naming conventions).
+    await grab('nasa', `https://images-assets.nasa.gov/video/${encodeURIComponent(id)}/collection.json`, `nasa/assets/${id}.json`, { nasaId: id, kind: 'asset-list' });
     const cap = await grab('nasa', `https://images-api.nasa.gov/captions/${encodeURIComponent(id)}`, `nasa/captions/${id}.json`, { nasaId: id });
     if (!cap) continue;
     try {
