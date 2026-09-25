@@ -33,6 +33,11 @@ const ALLOWED_HOSTS = new Set([
   'www.npdc.ncpor.res.in',
   'npdc.ncpor.res.in',
   'data.ncpor.res.in',
+  'www.nasa.gov',
+  'www.pangaea.de',
+  'www.data.gov.in',
+  'openalex.org',
+  'help.openalex.org',
 ]);
 const MAX_BYTES = 12 * 1024 * 1024;
 
@@ -289,7 +294,53 @@ async function ncpor() {
   await save('ncpor/pages-metadata.json', Buffer.from(JSON.stringify(out, null, 2)));
 }
 
-const steps = { nsidc, pangaea, nasa, openalex, commons, wikipedia, usgovText, ncpor };
+// ---------------------------------------------------------------- Reuse policies (evidence for rights decisions)
+function htmlToText(html) {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<(br|\/p|\/div|\/li|\/h[1-6]|\/tr)[^>]*>/gi, '\n')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;|&rsquo;/g, "'")
+    .replace(/&quot;|&ldquo;|&rdquo;/g, '"')
+    .replace(/[ \t]+/g, ' ')
+    .replace(/\n\s*\n+/g, '\n')
+    .trim();
+}
+
+async function policies() {
+  const pages = [
+    ['nsidc-use-copyright', 'https://nsidc.org/about/use-copyright'],
+    ['nsidc-g02135-v4-landing', 'https://nsidc.org/data/g02135/versions/4'],
+    ['nasa-images-and-media', 'https://www.nasa.gov/nasa-brand-center/images-and-media/'],
+    ['earthobservatory-image-use', 'https://earthobservatory.nasa.gov/image-use-policy'],
+    ['pangaea-terms', 'https://www.pangaea.de/about/terms.php'],
+    ['wikipedia-reusing-content', 'https://en.wikipedia.org/wiki/Wikipedia:Reusing_Wikipedia_content'],
+    ['godl-india', 'https://www.data.gov.in/Godl'],
+    ['openalex-about', 'https://help.openalex.org/hc/en-us/articles/24397285563671-About-the-data'],
+    ['noaa-arc-2024-home', 'https://arctic.noaa.gov/report-card/report-card-2024/'],
+  ];
+  for (const [slug, url] of pages) {
+    const r = await grab('policies', url, null, { slug, note: 'policy text extracted; raw HTML not stored' });
+    if (r) await save(`policies/${slug}.txt`, Buffer.from(`SOURCE: ${r.finalUrl}\nRETRIEVED: ${new Date().toISOString()}\nSHA256(raw): ${sha256(r.buf)}\n\n` + htmlToText(r.buf.toString('utf8'))));
+  }
+  // NCPOR: discover copyright / policy pages from the homepage links.
+  const home = await grab('policies', 'https://ncpor.res.in/', null, { note: 'policy link discovery' });
+  if (home) {
+    const links = extractMeta(home.buf.toString('utf8'), home.finalUrl).links.filter((l) => /copyright|policy|terms|disclaimer|hyperlink/i.test(l.text));
+    const seen = new Set();
+    for (const l of links) {
+      if (seen.has(l.href) || seen.size >= 8 || !ALLOWED_HOSTS.has(new URL(l.href).hostname)) continue;
+      seen.add(l.href);
+      const r = await grab('policies', l.href, null, { slug: 'ncpor-' + l.text, note: 'policy text extracted' });
+      if (r) await save(`policies/ncpor-${l.text.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40)}.txt`, Buffer.from(`SOURCE: ${r.finalUrl}\nLINK TEXT: ${l.text}\nRETRIEVED: ${new Date().toISOString()}\nSHA256(raw): ${sha256(r.buf)}\n\n` + htmlToText(r.buf.toString('utf8')).slice(0, 20000)));
+    }
+  }
+}
+
+const steps = { policies, nsidc, pangaea, nasa, openalex, commons, wikipedia, usgovText, ncpor };
 for (const [k, fn] of Object.entries(steps)) {
   if (!want(k)) continue;
   console.log(`\n=== ${k}`);
