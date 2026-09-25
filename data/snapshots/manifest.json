@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T11:14:31.703Z",
+  "generatedAt": "2026-09-25T11:16:46.860Z",
   "runner": "github-actions",
   "entries": [
     {
@@ -892,18 +892,6 @@
       "sha256": "5715fba06503e5925b2be173729723ddb331d49655adb4f465c75fbdf3940651"
     },
     {
-      "provider": "openalex",
-      "url": "https://api.openalex.org/institutions?search=National%20Centre%20for%20Polar%20and%20Ocean%20Research",
-      "path": "openalex/institutions-search.json",
-      "retrievedAt": "2026-09-25T11:14:39.963Z",
-      "status": 429,
-      "contentType": "application/json",
-      "finalUrl": "https://api.openalex.org/institutions?search=National%20Centre%20for%20Polar%20and%20Ocean%20Research",
-      "bytes": 610,
-      "ok": false,
-      "error": "HTTP 429"
-    },
-    {
       "provider": "commons",
       "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrlimit=8&gsrsearch=Maitri%20station%20Antarctica&prop=imageinfo&iiprop=url|extmetadata|size|mime&iiurlwidth=960",
       "path": "commons/search-Maitri_station_Antarctica.json",
@@ -1372,6 +1360,61 @@
       "note": "metadata extraction only",
       "ok": false,
       "error": "host not allowlisted: onlineform.ncpor.res.in"
+    },
+    {
+      "provider": "openalex",
+      "url": "https://api.openalex.org/institutions?search=National%20Centre%20for%20Polar%20and%20Ocean%20Research",
+      "path": "openalex/institutions-search.json",
+      "retrievedAt": "2026-09-25T11:16:46.863Z",
+      "attempts": 1,
+      "status": 200,
+      "contentType": "application/json",
+      "finalUrl": "https://api.openalex.org/institutions?search=National%20Centre%20for%20Polar%20and%20Ocean%20Research",
+      "bytes": 24325,
+      "ok": true,
+      "sha256": "da9294bfeb85c59b2a598df2cc872acfd47ee1d594bf2c465d0cfc3bfb232bd9"
+    },
+    {
+      "provider": "openalex",
+      "url": "https://api.openalex.org/works?filter=institutions.id:I106814784&sort=cited_by_count:desc&per-page=40",
+      "path": "openalex/works-ncpor-top-cited.json",
+      "retrievedAt": "2026-09-25T11:16:47.377Z",
+      "institution": "I106814784",
+      "attempts": 1,
+      "status": 200,
+      "contentType": "application/json",
+      "finalUrl": "https://api.openalex.org/works?filter=institutions.id:I106814784&sort=cited_by_count:desc&per-page=40",
+      "bytes": 1922332,
+      "ok": true,
+      "sha256": "e0e5e0170f6f10c823c1e6ccd15e8d43b2ef14ced0fd490526630f775681ce43"
+    },
+    {
+      "provider": "openalex",
+      "url": "https://api.openalex.org/works?filter=institutions.id:I106814784,title_and_abstract.search:antarctic%20sea%20ice&sort=publication_date:desc&per-page=25",
+      "path": "openalex/works-ncpor-antarctic-sea-ice.json",
+      "retrievedAt": "2026-09-25T11:16:48.317Z",
+      "institution": "I106814784",
+      "attempts": 1,
+      "status": 200,
+      "contentType": "application/json",
+      "finalUrl": "https://api.openalex.org/works?filter=institutions.id:I106814784,title_and_abstract.search:antarctic%20sea%20ice&sort=publication_date:desc&per-page=25",
+      "bytes": 1130440,
+      "ok": true,
+      "sha256": "7316c8e2974138bfad86064f07f4c684825457974d4a26de30f6976207f31e71"
+    },
+    {
+      "provider": "openalex",
+      "url": "https://api.openalex.org/works?filter=institutions.id:I106814784,title_and_abstract.search:arctic%20svalbard&sort=publication_date:desc&per-page=15",
+      "path": "openalex/works-ncpor-arctic.json",
+      "retrievedAt": "2026-09-25T11:16:49.047Z",
+      "institution": "I106814784",
+      "attempts": 1,
+      "status": 200,
+      "contentType": "application/json",
+      "finalUrl": "https://api.openalex.org/works?filter=institutions.id:I106814784,title_and_abstract.search:arctic%20svalbard&sort=publication_date:desc&per-page=15",
+      "bytes": 315644,
+      "ok": true,
+      "sha256": "8daf6a424b6b75ab719941bac1a2a042e8af9a928cdc57c7f56bf280f1f8b60c"
     }
   ]
 }
