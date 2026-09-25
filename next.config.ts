@@ -24,7 +24,7 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   serverExternalPackages: ['@electric-sql/pglite', 'pdfjs-dist', 'postgres'],
   outputFileTracingIncludes: {
-    '/**': ['./db/migrations/**', './data/snapshots/**'],
+    '/**': ['./db/migrations/**', './data/snapshots/manifest.json', './data/snapshots/policies/**', './data/build/**', './assets/fonts/**'],
   },
   async headers() {
     return [{ source: '/:path*', headers: securityHeaders }];

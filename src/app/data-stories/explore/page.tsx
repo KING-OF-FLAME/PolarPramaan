@@ -4,6 +4,7 @@ import { computeRecipe, CalcError } from '@/lib/calc/compute';
 import { PageHeader, SetupRequired, Notice } from '@/components/ui';
 import { CalcView } from '@/components/CalcView';
 import { monthName } from '@/lib/calc/format';
+import { isReadOnlyPreview } from '@/lib/env';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Reproducible chart' };
@@ -89,13 +90,24 @@ export default async function ExploreSeries({ searchParams }: { searchParams: SP
         <button className="btn btn-primary">Recompute</button>
       </form>
       <CalcView recipe={recipe} result={result} calcId={null} />
-      <form method="post" action="/api/calc" className="mt-5 no-print">
-        <input type="hidden" name="recipe" value={JSON.stringify(recipe)} />
-        <button className="btn btn-primary">Save calculation and get downloads</button>
-        <p className="text-sm muted mt-1">
-          Saving stores the recipe and result under a stable id, so stories can cite it and you can download the selected rows, recipe JSON and a verification script.
-        </p>
-      </form>
+      <div className="mt-5 no-print flex gap-2 flex-wrap">
+        <a className="btn btn-secondary" href={`/api/calc/export?format=csv&recipe=${encodeURIComponent(JSON.stringify(recipe))}`}>
+          Selected rows (CSV)
+        </a>
+        <a className="btn btn-secondary" href={`/api/calc/export?format=json&recipe=${encodeURIComponent(JSON.stringify(recipe))}`}>
+          Recipe + results (JSON)
+        </a>
+        <a className="btn btn-secondary" href="/api/calc/export?format=verify">
+          Verification script
+        </a>
+      </div>
+      {!isReadOnlyPreview() && (
+        <form method="post" action="/api/calc" className="mt-3 no-print">
+          <input type="hidden" name="recipe" value={JSON.stringify(recipe)} />
+          <button className="btn btn-primary">Save calculation (stable id for stories)</button>
+          <p className="text-sm muted mt-1">Saving stores the recipe and result under a stable id that stories and answer keys can cite.</p>
+        </form>
+      )}
     </div>
   );
 }

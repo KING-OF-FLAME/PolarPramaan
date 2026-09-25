@@ -12,3 +12,4 @@ playwright-report/
 coverage/
 .vercel
 exports-tmp/
+data/build/

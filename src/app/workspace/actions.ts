@@ -32,6 +32,7 @@ function friendly(e: unknown): string {
 
 // ------------------------------------------------------------------ auth
 export async function loginAction(form: FormData) {
+  if ((await import('@/lib/env')).isReadOnlyPreview()) back('/workspace/login', { error: 'Sign-in is disabled in the read-only preview.' });
   const email = s(form, 'email').toLowerCase();
   const password = String(form.get('password') ?? '');
   const db = await getDb();

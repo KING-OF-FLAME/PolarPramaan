@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { currentActor } from '@/lib/auth/session';
 import { logoutAction } from './actions';
-import { dbMode } from '@/lib/env';
+import { dbMode, isReadOnlyPreview } from '@/lib/env';
 import { Notice } from '@/components/ui';
 
 export const dynamic = 'force-dynamic';
@@ -22,6 +22,13 @@ export default async function WorkspaceLayout({ children }: { children: React.Re
   const actor = await currentActor();
   return (
     <div>
+      {isReadOnlyPreview() && (
+        <Notice tone="warn" title="Editorial workspace disabled in this read-only preview">
+          This deployment runs on a database image built from the committed source snapshot, with no persistent database. Drafts, reviews,
+          publications and corrections would be lost, so sign-in is disabled. Configure <code>DATABASE_URL</code> (see docs/SETUP.md) to enable the workspace.
+          The full editorial workflow is exercised by the automated end-to-end tests (docs/EVALUATION.md).
+        </Notice>
+      )}
       {dbMode() === 'unconfigured' && <Notice tone="warn" title="Editorial workspace unavailable">No persistent database is configured (DATABASE_URL). Editorial work would not survive, so the workspace is disabled.</Notice>}
       {actor && (
         <div className="flex flex-wrap items-center gap-2 mb-6 border-b pb-3" style={{ borderColor: 'var(--border)' }}>

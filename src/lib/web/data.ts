@@ -1,5 +1,6 @@
 import 'server-only';
 import { getDb, DbUnavailableError, type Db, type Queryable } from '../db';
+import { isReadOnlyPreview } from '../env';
 
 export type Loaded<T> = { ok: true; data: T } | { ok: false; reason: 'unconfigured' | 'error'; message: string };
 
@@ -22,6 +23,7 @@ export async function publicRead<T>(fn: (q: Queryable) => Promise<T>): Promise<L
 
 /** Record an actual internal usage event (views, evidence opens, downloads). Best effort. */
 export async function recordUsage(kind: 'record_view' | 'story_view' | 'evidence_open' | 'export_download' | 'receipt_view' | 'pack_saved', targetId: string) {
+  if (isReadOnlyPreview()) return; // no persistent store: do not record ephemeral counts
   try {
     const db = await getDb();
     await db.query(`insert into usage_events (kind, target_id) values ($1, $2)`, [kind, targetId.slice(0, 100)]);

@@ -9,7 +9,7 @@ export interface Queryable {
 }
 
 export interface Db extends Queryable {
-  mode: 'postgres' | 'pglite-file' | 'pglite-memory';
+  mode: 'postgres' | 'pglite-file' | 'pglite-memory' | 'pglite-snapshot';
   /** Run fn in a transaction. Do not call tx() again inside fn; pass the Queryable down. */
   tx<T>(fn: (q: Queryable) => Promise<T>): Promise<T>;
   /** Run fn in a read-only transaction under the restricted pp_public role. */
@@ -30,6 +30,7 @@ export async function createDb(mode: string, url?: string, opts: { migrate?: boo
   if (mode === 'postgres' && url) db = await createPostgres(url);
   else if (mode === 'pglite-file') db = await createPglite(url && url.startsWith('pglite:') ? url.slice(7) : join(process.cwd(), '.data', 'pglite'));
   else if (mode === 'pglite-memory') db = await createPglite(null);
+  else if (mode === 'pglite-snapshot' && url?.startsWith('snapshot:')) db = await createPglite(null, url.slice(9));
   else throw new DbUnavailableError();
   if (opts.migrate ?? db.mode !== 'postgres') await migrate(db);
   return db;
@@ -74,9 +75,13 @@ async function createPostgres(url: string): Promise<Db> {
   return db;
 }
 
-async function createPglite(dataDir: string | null): Promise<Db> {
+async function createPglite(dataDir: string | null, snapshotTar?: string): Promise<Db> {
   const { PGlite } = await import('@electric-sql/pglite');
-  const pg = dataDir ? await PGlite.create(dataDir) : await PGlite.create();
+  let pg;
+  if (snapshotTar) {
+    const { readFile } = await import('node:fs/promises');
+    pg = await PGlite.create({ loadDataDir: new Blob([new Uint8Array(await readFile(snapshotTar))]) });
+  } else pg = dataDir ? await PGlite.create(dataDir) : await PGlite.create();
   // PGlite is single-connection: serialize transactions so they do not interleave.
   let chain: Promise<unknown> = Promise.resolve();
   const serial = <T>(fn: () => Promise<T>): Promise<T> => {
@@ -91,7 +96,7 @@ async function createPglite(dataDir: string | null): Promise<Db> {
     },
   });
   const db: Db = {
-    mode: dataDir ? 'pglite-file' : 'pglite-memory',
+    mode: snapshotTar ? 'pglite-snapshot' : dataDir ? 'pglite-file' : 'pglite-memory',
     query: (text, params) => serial(() => wrap(pg as unknown as PgTx).query(text, params)),
     tx: (fn) => serial(() => pg.transaction((t) => fn(wrap(t as unknown as PgTx)))),
     asPublic: (fn) =>
@@ -104,7 +109,8 @@ async function createPglite(dataDir: string | null): Promise<Db> {
       ),
     exec: (text) => serial(async () => void (await pg.exec(text))),
     close: () => pg.close(),
-  };
+    dump: () => pg.dumpDataDir('gzip'),
+  } as Db & { dump: () => Promise<Blob> };
   return db;
 }
 

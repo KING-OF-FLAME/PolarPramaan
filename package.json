@@ -24,7 +24,8 @@
     "eval:run": "tsx --conditions=react-server scripts/eval-run.ts",
     "admin:invite": "tsx --conditions=react-server scripts/admin-invite.ts",
     "jobs:run": "tsx --conditions=react-server scripts/jobs-run.ts",
-    "snapshot:fetch": "node scripts/snapshot/fetch-sources.mjs"
+    "snapshot:fetch": "node scripts/snapshot/fetch-sources.mjs",
+    "build:preview": "tsx --conditions=react-server scripts/build-snapshot-db.ts && next build"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "0.128.0",

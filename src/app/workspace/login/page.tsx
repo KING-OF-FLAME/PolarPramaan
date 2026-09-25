@@ -2,10 +2,12 @@ import { redirect } from 'next/navigation';
 import { currentActor } from '@/lib/auth/session';
 import { loginAction } from '../actions';
 import { Notice, PageHeader } from '@/components/ui';
+import { isReadOnlyPreview } from '@/lib/env';
 
 export const metadata = { title: 'Editor sign-in' };
 
 export default async function Login({ searchParams }: { searchParams: Promise<{ error?: string; ok?: string }> }) {
+  if (isReadOnlyPreview()) return <PageHeader title="Editor sign-in" lead="Not available in the read-only preview." />;
   if (await currentActor()) redirect('/workspace');
   const sp = await searchParams;
   return (
