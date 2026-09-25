@@ -402,48 +402,6 @@
       "sha256": "53db6fc985a3c846de0ea0a1c125edab7a19cc149b1f0fae4b70d4c714a2cf9a"
     },
     {
-      "provider": "nsidc",
-      "url": "https://nsidc.org/sites/default/files/documents/user-guide/g02135-v004-userguide.pdf",
-      "path": "nsidc/docs/g02135-v004-userguide.pdf",
-      "retrievedAt": "2026-09-25T11:14:34.781Z",
-      "kind": "user-guide",
-      "product": "G02135",
-      "status": 200,
-      "contentType": "application/pdf",
-      "finalUrl": "https://nsidc.org/sites/default/files/documents/user-guide/g02135-v004-userguide.pdf",
-      "bytes": 2010615,
-      "ok": true,
-      "sha256": "d6f5cbd136f8dac750a210e00beae1fa5e1f0b82e6d50cc75968045710398b7d"
-    },
-    {
-      "provider": "nsidc",
-      "url": "https://nsidc.org/sites/default/files/interpretation-resources-sea-ice-trends-and-anomalies.pdf",
-      "path": "nsidc/docs/interpretation-resources-sea-ice-trends-and-anomalies.pdf",
-      "retrievedAt": "2026-09-25T11:14:35.245Z",
-      "kind": "user-guide",
-      "product": "G02135",
-      "status": 200,
-      "contentType": "application/pdf",
-      "finalUrl": "https://nsidc.org/sites/default/files/interpretation-resources-sea-ice-trends-and-anomalies.pdf",
-      "bytes": 431506,
-      "ok": true,
-      "sha256": "480dbab2049c2b82f44f890fbb8e4886ed1a450a876f06bab8e0ec4ed78bf9e5"
-    },
-    {
-      "provider": "nsidc",
-      "url": "https://nsidc.org/sites/default/files/sea-ice-index-baseline-period-change.pdf",
-      "path": "nsidc/docs/sea-ice-index-baseline-period-change.pdf",
-      "retrievedAt": "2026-09-25T11:14:35.496Z",
-      "kind": "user-guide",
-      "product": "G02135",
-      "status": 200,
-      "contentType": "application/pdf",
-      "finalUrl": "https://nsidc.org/sites/default/files/sea-ice-index-baseline-period-change.pdf",
-      "bytes": 562368,
-      "ok": true,
-      "sha256": "61de22a6e7c93cc0b486f5a6bd9c84db931d519fc263587b4ce5f9788b1f4476"
-    },
-    {
       "provider": "pangaea",
       "url": "https://doi.pangaea.de/10.1594/PANGAEA.885208?format=textfile",
       "path": "pangaea/PANGAEA.885208.tab",
@@ -725,19 +683,6 @@
       "bytes": 314724,
       "ok": true,
       "sha256": "7f7312e088f9b4cb253c89ee4f2430ead640ab0018bd8253523c9827a8e33d9d"
-    },
-    {
-      "provider": "nsidc",
-      "url": "https://nsidc.org/learn/parts-cryosphere/sea-ice/quick-facts-about-sea-ice",
-      "path": "text/nsidc/learn_parts_cryosphere_sea_ice_quick_facts_about_sea_ice.html",
-      "retrievedAt": "2026-09-25T11:14:48.222Z",
-      "kind": "html-text",
-      "status": 200,
-      "contentType": "text/html; charset=UTF-8",
-      "finalUrl": "https://nsidc.org/learn/parts-cryosphere/sea-ice/quick-facts-about-sea-ice",
-      "bytes": 92191,
-      "ok": true,
-      "sha256": "8d71067d5e5010be8ba5b48ea9f9968573f00c244300f19ed76ceced6fea85c8"
     },
     {
       "provider": "openalex",

@@ -132,17 +132,7 @@ async function nsidc() {
       await grab('nsidc', dir + f, `nsidc/${hemi}/monthly/${f}`, { product: 'G02135', version: '4.0', hemisphere: hemi });
     }
   }
-  // Product landing page: used only to discover the user guide link.
-  const landing = await grab('nsidc', 'https://nsidc.org/data/g02135/versions/4', null, { note: 'landing page (discovery only)' });
-  if (landing) {
-    const html = landing.buf.toString('utf8');
-    const pdfs = [...new Set([...html.matchAll(/href="([^"]+\.pdf)"/gi)].map((m) => new URL(m[1], 'https://nsidc.org/').toString()))];
-    console.log('nsidc pdf links:', pdfs.join(' '));
-    for (const p of pdfs.filter((u) => !/poster/i.test(u)).slice(0, 4)) {
-      const name = p.split('/').pop();
-      await grab('nsidc', p, `nsidc/docs/${name}`, { kind: 'user-guide', product: 'G02135' });
-    }
-  }
+  // NSIDC documentation PDFs are not downloaded: NSIDC reuse terms for documents were not established.
 }
 
 // ---------------------------------------------------------------- PANGAEA 885208
@@ -246,7 +236,6 @@ async function usgovText() {
     ['earthobservatory', 'https://earthobservatory.nasa.gov/world-of-change/sea-ice-antarctic'],
     ['nasa-science', 'https://science.nasa.gov/earth/explore/earth-indicators/arctic-sea-ice/'],
     ['noaa-arc', 'https://arctic.noaa.gov/report-card/report-card-2024/sea-ice-2024/'],
-    ['nsidc', 'https://nsidc.org/learn/parts-cryosphere/sea-ice/quick-facts-about-sea-ice'],
   ];
   for (const [p, url] of pages) {
     const slug = new URL(url).pathname.replace(/[^A-Za-z0-9]+/g, '_').replace(/^_|_$/g, '');
@@ -349,7 +338,49 @@ async function policies() {
   }
 }
 
-const steps = { policies, nsidc, pangaea, nasa, openalex, commons, wikipedia, usgovText, ncpor };
+// ---------------------------------------------------------------- CC-BY open-access papers with NCPOR authors
+const OA_TOPIC = /antarc|arctic|sea ice|glacier|polar|southern ocean|svalbard|ice sheet|fjord/i;
+async function oapdf() {
+  const seen = new Set();
+  const picks = [];
+  for (const f of ['works-ncpor-antarctic-sea-ice', 'works-ncpor-top-cited', 'works-ncpor-arctic']) {
+    let j;
+    try {
+      j = JSON.parse(await readFile(join(ROOT, 'openalex', f + '.json'), 'utf8'));
+    } catch {
+      continue;
+    }
+    for (const r of j.results) {
+      const b = r.best_oa_location;
+      if (!b || b.license !== 'cc-by' || !b.pdf_url || seen.has(r.id) || !OA_TOPIC.test(r.display_name) || r.type === 'preprint') continue;
+      seen.add(r.id);
+      picks.push({ id: r.id.split('/').pop(), url: b.pdf_url.replace(/^http:/, 'https:'), doi: r.doi, title: r.display_name });
+    }
+  }
+  let ok = 0;
+  for (const p of picks) {
+    if (ok >= 6) break;
+    let host;
+    try {
+      host = new URL(p.url).hostname;
+    } catch {
+      continue;
+    }
+    ALLOWED_HOSTS.add(host); // host taken from OpenAlex best_oa_location for a CC-BY work
+    const r = await grab('oapdf', p.url, `oapdf/${p.id}.pdf`, { openalexId: p.id, doi: p.doi, title: p.title, license: 'cc-by' }, { accept: 'application/pdf' });
+    if (r && !/pdf/i.test(r.contentType) && r.buf.subarray(0, 5).toString() !== '%PDF-') {
+      const e = manifest.entries[manifest.entries.length - 1];
+      e.ok = false;
+      e.error = `not a PDF (content-type ${r.contentType})`;
+      const { rm } = await import('node:fs/promises');
+      await rm(join(ROOT, `oapdf/${p.id}.pdf`), { force: true });
+      continue;
+    }
+    if (r) ok++;
+  }
+}
+
+const steps = { oapdf, policies, nsidc, pangaea, nasa, openalex, commons, wikipedia, usgovText, ncpor };
 for (const [k, fn] of Object.entries(steps)) {
   if (!want(k)) continue;
   console.log(`\n=== ${k}`);
