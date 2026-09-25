@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.data/
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+next-env.d.ts
+test-results/
+playwright-report/
+coverage/
+.vercel
+exports-tmp/
