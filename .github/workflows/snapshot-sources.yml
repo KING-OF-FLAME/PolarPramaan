@@ -5,6 +5,11 @@ name: Snapshot real sources
 # commits the hashed snapshot + manifest back to the branch that triggered it.
 on:
   workflow_dispatch:
+    inputs:
+      only:
+        description: 'Comma-separated provider steps to refresh (empty = all)'
+        required: false
+        default: ''
   push:
     paths:
       - 'scripts/snapshot/**'
@@ -27,7 +32,10 @@ jobs:
         with:
           node-version: 22
       - name: Fetch sources
-        run: node scripts/snapshot/fetch-sources.mjs
+        # A push re-runs only the step(s) listed here; workflow_dispatch can refresh any/all.
+        run: node scripts/snapshot/fetch-sources.mjs --only="$ONLY"
+        env:
+          ONLY: ${{ github.event_name == 'push' && 'openalex' || inputs.only }}
       - name: Commit snapshot
         run: |
           git config user.name "polarpramaan-snapshot-bot"

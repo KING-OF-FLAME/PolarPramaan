@@ -76,7 +76,14 @@ async function save(relPath, buf) {
 async function grab(provider, url, relPath, meta = {}, opts = {}) {
   const entry = { provider, url, path: relPath, retrievedAt: new Date().toISOString(), ...meta };
   try {
-    const r = await fetchChecked(url, opts);
+    let r = await fetchChecked(url, opts);
+    for (let attempt = 1; r.status === 429 && attempt <= 4; attempt++) {
+      const wait = 5000 * 2 ** attempt;
+      console.log(`429 from ${url}; retrying in ${wait}ms`);
+      await new Promise((res) => setTimeout(res, wait));
+      r = await fetchChecked(url, opts);
+    }
+    entry.attempts = entry.attempts || 1;
     entry.status = r.status;
     entry.contentType = r.contentType;
     entry.finalUrl = r.finalUrl;
@@ -126,7 +133,7 @@ async function nsidc() {
     const html = landing.buf.toString('utf8');
     const pdfs = [...new Set([...html.matchAll(/href="([^"]+\.pdf)"/gi)].map((m) => new URL(m[1], 'https://nsidc.org/').toString()))];
     console.log('nsidc pdf links:', pdfs.join(' '));
-    for (const p of pdfs.slice(0, 4)) {
+    for (const p of pdfs.filter((u) => !/poster/i.test(u)).slice(0, 4)) {
       const name = p.split('/').pop();
       await grab('nsidc', p, `nsidc/docs/${name}`, { kind: 'user-guide', product: 'G02135' });
     }

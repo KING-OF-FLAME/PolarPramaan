@@ -431,20 +431,6 @@
     },
     {
       "provider": "nsidc",
-      "url": "https://nsidc.org/sites/default/files/documents/technical-reference/search_2003_iceindex_poster.pdf",
-      "path": "nsidc/docs/search_2003_iceindex_poster.pdf",
-      "retrievedAt": "2026-09-25T11:14:35.316Z",
-      "kind": "user-guide",
-      "product": "G02135",
-      "status": 200,
-      "contentType": "application/pdf",
-      "finalUrl": "https://nsidc.org/sites/default/files/documents/technical-reference/search_2003_iceindex_poster.pdf",
-      "bytes": 3724480,
-      "ok": true,
-      "sha256": "b9b1e393e040935beffc664dec631ec52959f9caea0723598c106ebb9ce5a7f4"
-    },
-    {
-      "provider": "nsidc",
       "url": "https://nsidc.org/sites/default/files/sea-ice-index-baseline-period-change.pdf",
       "path": "nsidc/docs/sea-ice-index-baseline-period-change.pdf",
       "retrievedAt": "2026-09-25T11:14:35.496Z",
