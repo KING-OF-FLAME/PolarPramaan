@@ -135,11 +135,18 @@ export async function applyItem(q: Queryable, it: CuratedItem, decidedBy: string
     const res = await runExtraction(ex);
     rep.warnings.push(...res.warnings);
     let ordinal = rep.spans;
-    for (const s of res.spans) {
+    // Batched inserts keep remote imports fast (one round trip per 100 spans).
+    for (let i = 0; i < res.spans.length; i += 100) {
+      const batch = res.spans.slice(i, i + 100);
+      const params: unknown[] = [];
+      const values = batch.map((s, j) => {
+        params.push(sv.id, s.kind, ordinal++, s.page ?? null, s.charStart ?? null, s.charEnd ?? null, s.heading ?? null, s.rowKey ?? null, s.columnNames ?? null, s.tStartMs ?? null, s.tEndMs ?? null, s.text, s.method);
+        const b = j * 13;
+        return `(${Array.from({ length: 13 }, (_, k) => `$${b + k + 1}${k === 8 ? '::text[]' : ''}`).join(',')})`;
+      });
       await q.query(
-        `insert into evidence_spans (source_version_id, kind, ordinal, page, char_start, char_end, heading, row_key, column_names, t_start_ms, t_end_ms, text, extraction_method)
-         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`,
-        [sv.id, s.kind, ordinal++, s.page ?? null, s.charStart ?? null, s.charEnd ?? null, s.heading ?? null, s.rowKey ?? null, s.columnNames ?? null, s.tStartMs ?? null, s.tEndMs ?? null, s.text, s.method],
+        `insert into evidence_spans (source_version_id, kind, ordinal, page, char_start, char_end, heading, row_key, column_names, t_start_ms, t_end_ms, text, extraction_method) values ${values.join(',')}`,
+        params,
       );
     }
     rep.spans = ordinal;

@@ -101,3 +101,18 @@ describe('calculation primitives', () => {
     expect(() => RecipeSchema.parse({ seriesKey: 'x', sourceVersionId: 'not-a-uuid', periodStart: '2000-01-01', periodEnd: '2001-01-01', stats: ['mean'] })).toThrow();
   });
 });
+
+describe('OpenRouter free-model policy', () => {
+  it('refuses non-free models and parses JSON wrapped in prose', async () => {
+    const { llmStatus, firstJsonObject } = await import('@/lib/llm');
+    const env = { ...process.env };
+    process.env.LLM_PROVIDER = 'openrouter';
+    process.env.LLM_API_KEY = 'test-key-not-real';
+    process.env.LLM_MODEL = 'openai/gpt-4o';
+    expect(llmStatus().configured).toBe(false);
+    process.env.LLM_MODEL = 'meta-llama/llama-3.3-70b-instruct:free';
+    expect(llmStatus().configured).toBe(true);
+    process.env = env;
+    expect(firstJsonObject('Sure! ```json\n{"a": {"b": "x}"}, "c": 1}\n``` done')).toEqual({ a: { b: 'x}' }, c: 1 });
+  });
+});

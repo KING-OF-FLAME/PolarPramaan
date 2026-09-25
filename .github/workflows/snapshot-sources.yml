@@ -11,6 +11,7 @@ on:
         required: false
         default: ''
   push:
+    branches-ignore: [main]
     paths:
       - 'scripts/snapshot/**'
       - '.github/workflows/snapshot-sources.yml'
