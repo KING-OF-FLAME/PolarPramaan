@@ -1,0 +1,139 @@
+/* DATA DESCRIPTION:
+Citation:	de Jong, Ehlke; Vichi, Marcello; Saunders, Clinton F W; Kotilainen, Mikko J; Luyt, Hermann; Peel, Stephen P M; Swart, Daniël J (2018): Sea ice conditions within the Antarctic Marginal Ice Zone in summer 2016, onboard the SA Agulhas II [dataset]. University of Cape Town, PANGAEA, https://doi.org/10.1594/PANGAEA.885208
+Abstract:	Our knowledge of sea ice variability, which contributes to the detection of the Antarctic climate change trends, stems primarily from remotely sensed information. However, sea ice in the Southern Ocean is characterized by large variability that remains unresolved and limits our confidence on the remotely sensed products. Therefore, the in situ sea ice observations presented (according to the ASPeCt protocol) provide a greater understanding of the Antarctic sea ice environment - on a local scale - and allows us to evaluate remotely sensed products.
+Further details:	Erratum 2018-09-11 position correction (URI: https://store.pangaea.de/Publications/deJong-etal_2018/Erratum_positions.xlsx)
+Coverage:	MEDIAN LATITUDE: -63.073077 * MEDIAN LONGITUDE: 0.122391 * SOUTH-BOUND LATITUDE: -69.766670 * WEST-BOUND LONGITUDE: -0.753670 * NORTH-BOUND LATITUDE: -57.550000 * EAST-BOUND LONGITUDE: 0.945670
+	DATE/TIME START: 2016-12-07T00:00:00 * DATE/TIME END: 2016-12-10T00:00:00
+Event(s):	AGULII20161207_9 * LATITUDE: -57.550000 * LONGITUDE: 0.018170 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_10 * LATITUDE: -57.666670 * LONGITUDE: 0.001000 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_11 * LATITUDE: -57.783330 * LONGITUDE: 0.027670 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_12 * LATITUDE: -57.916670 * LONGITUDE: -0.004000 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_13 * LATITUDE: -58.050000 * LONGITUDE: -0.026330 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_14 * LATITUDE: -58.166670 * LONGITUDE: -0.059000 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_15 * LATITUDE: -58.250000 * LONGITUDE: -0.010670 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_16 * LATITUDE: -58.366670 * LONGITUDE: -0.040170 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_17 * LATITUDE: -58.533330 * LONGITUDE: -0.087830 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_18 * LATITUDE: -58.633330 * LONGITUDE: -0.167670 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_19 * LATITUDE: -58.783330 * LONGITUDE: -0.156500 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_20 * LATITUDE: -58.900000 * LONGITUDE: -0.065000 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_21 * LATITUDE: -59.016670 * LONGITUDE: -0.071830 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_22 * LATITUDE: -59.150000 * LONGITUDE: -0.014170 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161207_23 * LATITUDE: -59.266670 * LONGITUDE: -0.018000 * DATE/TIME: 2016-12-07T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_0 * LATITUDE: -59.433330 * LONGITUDE: -0.042000 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_1 * LATITUDE: -59.600000 * LONGITUDE: -0.004500 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_2 * LATITUDE: -59.750000 * LONGITUDE: 0.055330 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_3 * LATITUDE: -59.933330 * LONGITUDE: 0.096670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_4 * LATITUDE: -60.950000 * LONGITUDE: -0.000670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: Weddell Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_5 * LATITUDE: -60.266670 * LONGITUDE: -0.029670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: Weddell Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_6 * LATITUDE: -60.450000 * LONGITUDE: -0.111330 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: Weddell Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_7 * LATITUDE: -60.616670 * LONGITUDE: -0.040500 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: Weddell Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_8 * LATITUDE: -60.816670 * LONGITUDE: 0.153170 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_9 * LATITUDE: -60.883330 * LONGITUDE: 0.179000 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_10 * LATITUDE: -61.700000 * LONGITUDE: 0.250170 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_11 * LATITUDE: -61.216670 * LONGITUDE: 0.326000 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_12 * LATITUDE: -61.383330 * LONGITUDE: 0.356170 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_13 * LATITUDE: -61.550000 * LONGITUDE: 0.394670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_14 * LATITUDE: -61.733330 * LONGITUDE: 0.604170 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_15 * LATITUDE: -61.900000 * LONGITUDE: 0.749670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_16 * LATITUDE: -62.033330 * LONGITUDE: 0.802830 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_17 * LATITUDE: -62.200000 * LONGITUDE: 0.827670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161208_18 * LATITUDE: -62.366670 * LONGITUDE: 0.945670 * DATE/TIME: 2016-12-08T00:00:00 * LOCATION: South Atlantic Ocean * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_0 * LATITUDE: -68.616670 * LONGITUDE: 0.351830 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_1 * LATITUDE: -68.733330 * LONGITUDE: 0.331170 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_2 * LATITUDE: -68.833330 * LONGITUDE: 0.393330 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_3 * LATITUDE: -68.916670 * LONGITUDE: 0.338330 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_4 * LATITUDE: -68.950000 * LONGITUDE: 0.315500 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_5 * LATITUDE: -69.016670 * LONGITUDE: 0.343830 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_6 * LATITUDE: -69.050000 * LONGITUDE: 0.361330 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_7 * LATITUDE: -69.100000 * LONGITUDE: 0.368500 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_8 * LATITUDE: -69.183330 * LONGITUDE: 0.254000 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_9 * LATITUDE: -69.200000 * LONGITUDE: 0.020670 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_10 * LATITUDE: -69.233330 * LONGITUDE: 0.032000 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_11 * LATITUDE: -69.266670 * LONGITUDE: 0.035670 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_12 * LATITUDE: -69.300000 * LONGITUDE: 0.009330 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_13 * LATITUDE: -69.316670 * LONGITUDE: -0.058830 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_14 * LATITUDE: -69.766670 * LONGITUDE: -0.112000 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_15 * LATITUDE: -69.483330 * LONGITUDE: -0.176330 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_16 * LATITUDE: -69.516670 * LONGITUDE: -0.528500 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Lazarev Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+	AGULII20161210_17 * LATITUDE: -69.500000 * LONGITUDE: -0.753670 * DATE/TIME: 2016-12-10T00:00:00 * LOCATION: Weddell Sea * CAMPAIGN: AGULII201612 * BASIS: S. A. Agulhas II (URI: https://en.wikipedia.org/wiki/S._A._Agulhas_II) * METHOD/DEVICE: Ice survey (ICESUR)
+Comment:	On 2018-09-11 it was found, that the latitude and longitude were given in the wrong format here. Latitude and longitude are now corrected (now in the correct decimal degree, south and west are negative), and an erratum was added to this dataset (see Further details reference) explaining the change.
+Parameter(s):	Event label (Event) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Latitude of event (Latitude) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Longitude of event (Longitude) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Comment of event (Comment) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Station label (Station) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	DATE/TIME (Date/Time) * GEOCODE * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Ice concentration [tenths] (Ice conc) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: total
+	Ice concentration [tenths] (Ice conc) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Ice type [code] (Ice type) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Sea ice thickness [m] (EsEs) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Floe size [code] (Floe size) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Sea ice topography [code] (Topography) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Snow type [code] (Snow type) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Snow thickness [m] (Snow thick) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: primary sea ice
+	Ice concentration [tenths] (Ice conc) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: secondary sea ice
+	Ice type [code] (Ice type) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: secondary sea ice
+	Sea ice thickness [m] (EsEs) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: secondary sea ice
+	Floe size [code] (Floe size) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: secondary sea ice
+	Snow type [code] (Snow type) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: secondary sea ice
+	Snow thickness [m] (Snow thick) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za) * METHOD/DEVICE: Sea ice observation according to ASPeCt protocol (URI: hdl:10013/epic.40380.d013) * COMMENT: secondary sea ice
+	Temperature, water [°C] (Temp) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Temperature, air [°C] (TTT) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Wind speed [m/s] (ff) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+	Comment (Comment) * PI: de Jong, Ehlke (djnehl001@myuct.ac.za)
+License:	Creative Commons Attribution 3.0 Unported (CC-BY-3.0) (URI: https://creativecommons.org/licenses/by/3.0/)
+Size:	603 data points
+*/
+Event	Latitude	Longitude	Comment	Station	Date/Time	Ice conc [tenths] (total)	Ice conc [tenths] (primary sea ice)	Ice type [code] (primary sea ice)	EsEs [m] (primary sea ice)	Floe size [code] (primary sea ice)	Topography [code] (primary sea ice)	Snow type [code] (primary sea ice)	Snow thick [m] (primary sea ice)	Ice conc [tenths] (secondary sea ice)	Ice type [code] (secondary sea ice)	EsEs [m] (secondary sea ice)	Floe size [code] (secondary sea ice)	Snow type [code] (secondary sea ice)	Snow thick [m] (secondary sea ice)	Temp [°C]	TTT [°C]	ff [m/s]	Comment
+AGULII20161207_9	-57.5500	0.0182		9	2016-12-07	20	10	60	0.50	500	100	2	0.3	10	10	0.05	300	0	0	-0.67	-2.30	6.90	Moving through bergy waters. But lots of open water.
+AGULII20161207_10	-57.6667	0.0010		10	2016-12-07	10	10	60	0.50	500	100	2	0.2	0	10	0.05	300	0	0	-0.98	-2.60	8.10	Moving through bergy waters. But lots of open water.
+AGULII20161207_11	-57.7833	0.0277		11	2016-12-07	10	10	60	0.50	500	100	2	0.2	0	10	0.05	300	0	0	-0.94	-2.80	5.90	Moving through open water while passing a floe now and then.
+AGULII20161207_12	-57.9167	-0.0040		12	2016-12-07	10	10	60	0.70	500	100	2	0.2							-0.93	-2.90	13.10	The ship is avoiding the floes and we finally made contact with a few.
+AGULII20161207_13	-58.0500	-0.0263		13	2016-12-07	10	10	60	0.30	500	100	2	0.3							-0.85	-2.70	7.00	Mostly open water. The ship is avoiding most of the large floes.
+AGULII20161207_14	-58.1667	-0.0590		14	2016-12-07	0														-0.81	-3.10	5.90	Open water.
+AGULII20161207_15	-58.2500	-0.0107		15	2016-12-07	20	20	60	0.30	500	100	2	0.2							-0.79	-2.50	7.20	Open water and avoiding pieces of ice.
+AGULII20161207_16	-58.3667	-0.0402		16	2016-12-07	10	10	60	0.60	500	100	2	0.2	10	10	0.05	300	0	0	-1.24	-2.30	6.60	Mostly open water.
+AGULII20161207_17	-58.5333	-0.0878		17	2016-12-07	0														-0.86	-2.40	6.20	
+AGULII20161207_18	-58.6333	-0.1677		18	2016-12-07	0														-0.84	-2.40	5.70	
+AGULII20161207_19	-58.7833	-0.1565		19	2016-12-07	20	10	60	0.60	500	100	3	0.3							-0.94	-2.40	8.20	Large channels of open ocean.
+AGULII20161207_20	-58.9000	-0.0650		20	2016-12-07	20	10	60	1.30	500	100	3	0.4							-1.04	-2.50	7.30	
+AGULII20161207_21	-59.0167	-0.0718		21	2016-12-07	10	10	60	0.50	500	100	2	0.2							-0.95	-2.40	7.70	
+AGULII20161207_22	-59.1500	-0.0142		22	2016-12-07	0														-0.99	-2.40	8.20	The sun has set. There is not enough light to continue ice observations.
+AGULII20161207_23	-59.2667	-0.0180		23	2016-12-07	0														-0.93	-2.50	7.20	
+AGULII20161208_0	-59.4333	-0.0420		0	2016-12-08	0														-0.86	-2.50	9.20	
+AGULII20161208_1	-59.6000	-0.0045		1	2016-12-08	0														-0.89	-3.00	12.70	
+AGULII20161208_2	-59.7500	0.0553		2	2016-12-08	0														-0.76	-3.00	12.10	
+AGULII20161208_3	-59.9333	0.0967		3	2016-12-08	10	10	10	0.10	500		2	0.1							-0.95	-3.10	7.80	Mostly open water, however there are a few floes.
+AGULII20161208_4	-60.9500	-0.0007		4	2016-12-08	0														-1.06	-3.10	6.00	
+AGULII20161208_5	-60.2667	-0.0297		5	2016-12-08	0														-1.11	-3.10	4.20	
+AGULII20161208_6	-60.4500	-0.1113		6	2016-12-08	0														-1.09	-2.80	6.80	
+AGULII20161208_7	-60.6167	-0.0405		7	2016-12-08	0														-1.25	-3.20	4.80	
+AGULII20161208_8	-60.8167	0.1532		8	2016-12-08	40	30	80	0.50	500	100	2	0.3	10	90	0.05	300	0	0	-1.26	-2.90	8.70	
+AGULII20161208_9	-60.8833	0.1790		9	2016-12-08	70	50	80	0.40	500	100	3	0.2	20	90	0.05	300	0	0	-1.54	-2.40	8.80	High sea ice concentration. The ice cracks under the pressure of the ship.
+AGULII20161208_10	-61.7000	0.2502		10	2016-12-08	0														-1.32	-2.40	5.90	
+AGULII20161208_11	-61.2167	0.3260		11	2016-12-08	30	20	80	0.30	500	100	3	0.4	10	90	0.05	300	0	0	-1.59	-2.20	8.10	
+AGULII20161208_12	-61.3833	0.3562		12	2016-12-08	10	10	80	0.20	500	100	3	0.1							-1.23	-2.40	7.10	
+AGULII20161208_13	-61.5500	0.3947		13	2016-12-08	0														-1.20	-2.20	8.40	
+AGULII20161208_14	-61.7333	0.6042		14	2016-12-08	0														-1.01	-3.50	3.60	
+AGULII20161208_15	-61.9000	0.7497		15	2016-12-08	80	60	80	0.30	600	100	3	0.2	20	90	0.05	300	0	0	-1.67	-2.50	14.10	Continuus ice field of floes. Appoximately 150 m openwater in between these floes.
+AGULII20161208_16	-62.0333	0.8028		16	2016-12-08	40	30	80	0.20	500	100	3	0.2	10	90	0.05	300	0	0	-1.60	-2.30	6.90	
+AGULII20161208_17	-62.2000	0.8277		17	2016-12-08	10	10	80	0.10	500	100	3	0.1							-0.89	-2.30	9.40	
+AGULII20161208_18	-62.3667	0.9457		18	2016-12-08	0														-1.38	-2.30	9.60	We have entered a polynya.
+AGULII20161210_0	-68.6167	0.3518		0	2016-12-10	10	10	80	0.30	500	100	3	0.3							-0.49	-3.80	11.20	We have finally exited the very large polynya!
+AGULII20161210_1	-68.7333	0.3312		1	2016-12-10	60	60	80	0.70	600	100	3	0.2							-0.75	-4.00	10.50	The ice field is becoming more consolidated.
+AGULII20161210_2	-68.8333	0.3933		2	2016-12-10	90	90	80	0.30	600	100	3	0.3							-1.44	-4.80	11.40	
+AGULII20161210_3	-68.9167	0.3383		3	2016-12-10	100	100	80	0.30	600	100	3	0.2							-1.73	-4.70	11.40	
+AGULII20161210_4	-68.9500	0.3155		4	2016-12-10	100	100	80	0.50	800	100	3	0.2							-0.77	-4.30	4.70	
+AGULII20161210_5	-69.0167	0.3438		5	2016-12-10	30	20	80	0.90	600	100	3	0.3	10	90	0.10	300	0	0	-1.78	-3.90	11.50	
+AGULII20161210_6	-69.0500	0.3613		6	2016-12-10	70	60	80	1.30	600	100	3	0.3	10	90	0.10	300	0	0	-1.72	-4.80	10.30	
+AGULII20161210_7	-69.1000	0.3685		7	2016-12-10	40	20	80	0.50	400	100	3	0.3	20	90	0.10	300	0	0	-1.76	-4.30	8.60	After experining high concentrations of ice we are now observing a lot of brash ice.
+AGULII20161210_8	-69.1833	0.2540		8	2016-12-10	60	40	80	0.90	400	700	3	0.4	20	90	0.10	300	0	0	-1.68	-4.40	9.00	The ice floes have become ridged rather than level.
+AGULII20161210_9	-69.2000	0.0207		9	2016-12-10	100	100	80	1.30	800	700	3	0.6							-1.82	-4.00	9.30	The ship is in the process of ramming. She is struggling to get throuhg the ice.
+AGULII20161210_10	-69.2333	0.0320		10	2016-12-10	100	100	80	1.50	700	700	3	0.5							-1.60	-2.70	6.60	A very large floe stoppedas prevented us sailing foward. The ship needed to reverse. The ice shelf is in view!
+AGULII20161210_11	-69.2667	0.0357		11	2016-12-10	100	100	80	0.90	600	700	3	0.3							-0.59	-2.70	9.60	
+AGULII20161210_12	-69.3000	0.0093		12	2016-12-10	100	100	80	1.90	700	700	3	0.5							-1.79	-2.90	11.40	Rammed a floe; Didn't move for a while as the floe we hit stopped us did. We are pushing through it. Milling felt.
+AGULII20161210_13	-69.3167	-0.0588		13	2016-12-10	90	90	80	1.90	700	700	3	1.0							-1.72	-2.10	6.40	We are stuck in the ice again.
+AGULII20161210_14	-69.7667	-0.1120		14	2016-12-10	90	90	80	0.50	600	700	3	0.5							-1.71	-2.20	8.20	We are struggling through the ice.
+AGULII20161210_15	-69.4833	-0.1763		15	2016-12-10	0														-1.79	-3.30	5.10	
+AGULII20161210_16	-69.5167	-0.5285		16	2016-12-10	80	80	80	2.75	500	700	3	0.4							-1.78	-3.00	9.50	
+AGULII20161210_17	-69.5000	-0.7537		17	2016-12-10	100	100	80	1.10	500	700	3	1.4										We have made it to the ice shelf!
