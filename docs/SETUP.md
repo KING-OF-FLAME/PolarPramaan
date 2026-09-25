@@ -25,14 +25,18 @@ Open the printed invitation link, set a password (at least 12 characters) and si
 ## Production (Vercel + Postgres)
 
 1. Create a Postgres database. On Supabase, copy the **transaction pooler** connection string (port 6543). The app sets `prepare: false` for pooler compatibility.
-2. From your machine (or CI), with `DATABASE_URL` pointing at that database:
-   ```bash
-   pnpm db:migrate
-   pnpm ingest:bootstrap
-   pnpm admin:invite --email you@example.org --role admin --base https://<your-app>.vercel.app
+2. Create a dedicated application role and the public read role once, as a database admin (Supabase SQL editor). The app role owns the schema objects it creates; `pp_public` can later read only the `public_*` views:
+   ```sql
+   create role polarpramaan_app login password '<long random>' createrole;
+   grant usage, create on schema public to polarpramaan_app;
+   create role pp_public nologin;
+   grant usage on schema public to pp_public;
+   grant pp_public to polarpramaan_app with inherit false, set true;
    ```
-   The import reads the committed snapshot, so it needs no network access to the providers.
-3. In Vercel project settings, set the environment variables `DATABASE_URL`, `NEXT_PUBLIC_APP_URL` (your production URL) and `CRON_SECRET` (a long random string), plus optionally `LLM_API_KEY` and `LLM_MODEL`.
+   On Supabase the pooler user is `polarpramaan_app.<project-ref>`.
+3. In Vercel project settings, set `DATABASE_URL` (the pooler string for that role), `NEXT_PUBLIC_APP_URL` (your production URL) and `CRON_SECRET` (a long random string). For AI synthesis on OpenRouter's free tier, also set `LLM_PROVIDER=openrouter`, `LLM_API_KEY` and `LLM_MODEL` (a model id ending in `:free`; any other model is refused). Remove `PREVIEW_SNAPSHOT_DB` or set it to `0`.
+   The build command `pnpm build:preview` then migrates the database and runs the idempotent snapshot import before `next build`. It fails the deploy if `pp_public` cannot read the public views. To do the same from your machine instead: `pnpm db:migrate && pnpm ingest:bootstrap`.
+   Create the first account: `pnpm admin:invite --email you@example.org --role admin --base https://<your-app>.vercel.app`, or insert `sha256(token)` into `invites` from the SQL editor.
 4. Deploy. `vercel.json` registers a daily cron (Hobby plan limit) that processes scheduled publications. "Publish now" and the Publication Queue's "Process due items now" do not wait for the cron.
 5. In the workspace, open **Ingest & Source Health → Build pack** to create the offline museum pack.
 

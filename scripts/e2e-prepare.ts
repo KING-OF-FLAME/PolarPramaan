@@ -1,5 +1,6 @@
 // Prepares an isolated E2E database (PGlite file) from the real snapshot and
-// writes one-time invitation tokens for three test accounts.
+// writes one-time invitation tokens for three test accounts. With E2E_PG_URL set, it
+// uses that (empty, disposable) PostgreSQL database instead, to exercise the postgres driver.
 import { rmSync, writeFileSync, mkdirSync } from 'node:fs';
 import { createDb } from '../src/lib/db/core';
 import { curatedCatalog } from '../src/lib/ingest/curation';
@@ -12,7 +13,8 @@ const dir = process.env.E2E_DB_DIR ?? '.data/e2e-db';
 rmSync(dir, { recursive: true, force: true });
 mkdirSync('.data', { recursive: true });
 const t0 = Date.now();
-const db = await createDb('pglite-file', `pglite:${dir}`, { migrate: true });
+const pgUrl = process.env.E2E_PG_URL;
+const db = pgUrl ? await createDb('postgres', pgUrl, { migrate: true }) : await createDb('pglite-file', `pglite:${dir}`, { migrate: true });
 await ensureSources(db);
 for (const it of curatedCatalog()) await db.tx((q) => applyItem(q, it, 'e2e'));
 await db.tx(async (q) => {

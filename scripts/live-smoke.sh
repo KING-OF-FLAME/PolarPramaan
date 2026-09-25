@@ -15,7 +15,6 @@ check() {
   fi
 }
 check / 200 "What is in the catalog now"
-check / 200 "Read-only preview"
 check "/explore?india=1" 200 "Maitri"
 check "/explore?view=map" 200 "Antarctic (South Pole centre)"
 check /explore/expedition 200 "AGULII"
@@ -28,9 +27,10 @@ check /classroom/arctic-september-minimum/teacher 200 "Answer key"
 check /offline/india-in-antarctica 200 "Pocket Polar Museum"
 check /offline/india-in-antarctica/exhibit?v=1 200 "Pocket Polar Museum"
 check /sources 200 "Snapshot provenance"
-check /about 200 "pglite-snapshot"
+check /about 200 "Database mode: <!-- -->postgres"
+check /about 200 ":free)</li>"
 check /feed.xml 200 "<rss"
-check /workspace/login 200 "Not available in the read-only preview"
+check /workspace/login 200 "invite-only"
 check /sw.js 200 "pp-pack-"
 # security headers
 hdr=$(curl -sSI --max-time 30 "$BASE/")
@@ -44,5 +44,10 @@ check "$rec" 200 "Rights and permitted uses"
 sv=$(curl -sS --max-time 60 "$BASE/data-stories" | grep -o 'sv=[0-9a-f-]\{36\}&amp;series=N-monthly-extent' | head -1 | sed 's/sv=//;s/&amp;.*//')
 recipe=$(python3 -c "import json,urllib.parse;print(urllib.parse.quote(json.dumps({'seriesKey':'N-monthly-extent','sourceVersionId':'$sv','month':9,'periodStart':'1979-01-01','periodEnd':'2100-12-31','stats':['mean','trend']})))")
 check "/api/calc/export?format=csv&recipe=$recipe" 200 "2012-09"
+# AI synthesis (OpenRouter free model): either a validated AI answer or an explicit, honest fallback
+ai=$(curl -sS -L --max-time 120 "$BASE/ask?q=What+was+the+Arctic+sea+ice+extent+in+September+2012%3F&ai=1")
+if grep -q "AI synthesis (" <<<"$ai"; then echo "OK   /ask ai=1 AI synthesis answered"
+elif grep -q "Extractive" <<<"$ai"; then echo "WARN /ask ai=1 fell back to extractive (provider busy or rejected output)"
+else echo "FAIL /ask ai=1"; fail=1; fi
 echo "checked at $(date -u +%FT%TZ) against $BASE"
 exit $fail

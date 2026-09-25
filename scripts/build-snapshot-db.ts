@@ -20,6 +20,14 @@ if (process.env.DATABASE_URL) {
   const pdb = await createDb('postgres', process.env.DATABASE_URL, { migrate: false });
   const applied = await migrate(pdb);
   console.log(applied.length ? `migrations applied: ${applied.join(', ')}` : 'schema up to date');
+  // Public pages read as pp_public; fail the deploy now rather than serve errors later.
+  try {
+    await pdb.asPublic((q) => q.query('select 1 from public_records limit 1'));
+  } catch (e) {
+    console.error(`pp_public cannot read the public views (${(e as Error).message}).`);
+    console.error('Run once as a database admin: grant usage on schema public to pp_public;  (see docs/SETUP.md)');
+    process.exit(1);
+  }
   await ensureSources(pdb);
   let bad = 0, created = 0;
   for (const it of curatedCatalog()) {

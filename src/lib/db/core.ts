@@ -15,6 +15,8 @@ export interface Db extends Queryable {
   /** Run fn in a read-only transaction under the restricted pp_public role. */
   asPublic<T>(fn: (q: Queryable) => Promise<T>): Promise<T>;
   exec(sqlText: string): Promise<void>;
+  /** Run a multi-statement script atomically (used by migrations; poolers reject raw begin/commit). */
+  execTx(sqlText: string): Promise<void>;
   close(): Promise<void>;
 }
 
@@ -36,6 +38,8 @@ export async function createDb(mode: string, url?: string, opts: { migrate?: boo
   return db;
 }
 
+const jsonParam = (x: unknown) => (typeof x === 'string' ? x : JSON.stringify(x));
+
 async function createPostgres(url: string): Promise<Db> {
   const { default: postgres } = await import('postgres');
   const sql = postgres(url, {
@@ -44,6 +48,12 @@ async function createPostgres(url: string): Promise<Db> {
     idle_timeout: 20,
     connect_timeout: 10,
     onnotice: () => {},
+    // Callers pass JSON.stringify(...) for json/jsonb parameters (PGlite semantics). postgres.js
+    // would JSON-encode such a string again and store a JSON string, so pass strings through.
+    types: {
+      jsonb: { to: 3802, from: [3802], serialize: jsonParam, parse: (x: string) => JSON.parse(x) },
+      json: { to: 114, from: [114], serialize: jsonParam, parse: (x: string) => JSON.parse(x) },
+    },
   });
   type Tx = { unsafe: (q: string, p?: unknown[]) => Promise<unknown> };
   const wrap = (t: Tx): Queryable => ({
@@ -67,6 +77,9 @@ async function createPostgres(url: string): Promise<Db> {
     },
     async exec(text) {
       await sql.unsafe(text);
+    },
+    async execTx(text) {
+      await sql.begin((t) => t.unsafe(text));
     },
     async close() {
       await sql.end({ timeout: 5 });
@@ -108,6 +121,7 @@ async function createPglite(dataDir: string | null, snapshotTar?: string): Promi
         }),
       ),
     exec: (text) => serial(async () => void (await pg.exec(text))),
+    execTx: (text) => serial(async () => void (await pg.transaction((t) => t.exec(text)))),
     close: () => pg.close(),
     dump: () => pg.dumpDataDir('gzip'),
   } as Db & { dump: () => Promise<Blob> };
@@ -125,7 +139,7 @@ export async function migrate(db: Db, dir = join(process.cwd(), 'db', 'migration
   for (const f of files) {
     if (done.has(f)) continue;
     const text = await readFile(join(dir, f), 'utf8');
-    await db.exec(`begin;\n${text}\n;insert into schema_migrations(name) values ('${f.replace(/'/g, "''")}');\ncommit;`);
+    await db.execTx(`${text}\n;insert into schema_migrations(name) values ('${f.replace(/'/g, "''")}');`);
     applied.push(f);
   }
   return applied;

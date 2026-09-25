@@ -17,6 +17,6 @@ export default defineConfig({
     url: `http://localhost:${PORT}/about`,
     timeout: 600_000,
     reuseExistingServer: false,
-    env: { DATABASE_URL: 'pglite:.data/e2e-db', NEXT_PUBLIC_APP_URL: `http://localhost:${PORT}`, E2E_DB_DIR: '.data/e2e-db', ALLOW_SELF_REVIEW: 'false' },
+    env: { DATABASE_URL: process.env.E2E_PG_URL || 'pglite:.data/e2e-db', ...(process.env.E2E_PG_URL ? { E2E_PG_URL: process.env.E2E_PG_URL } : {}), NEXT_PUBLIC_APP_URL: `http://localhost:${PORT}`, E2E_DB_DIR: '.data/e2e-db', ALLOW_SELF_REVIEW: 'false' },
   },
 });
