@@ -1,20 +1,23 @@
 # Build state (checkpoint)
 
-Status vocabulary: done · in progress · not started · blocked (external).
-Last updated: 2026-09-25 (session in progress).
+Last updated: 2026-09-25. Live checklist: https://claude.ai/artifact/PSsZWwomXx1w2HykxheSBC
 
-| Phase | Scope | Status | Evidence / notes |
-|---|---|---|---|
-| 00 Preflight | Tooling, accounts, source anchors, docs set | in progress | GitHub (KING-OF-FLAME) + Vercel (hobby) authenticated; no Supabase/LLM keys; container egress blocks providers → GitHub Actions snapshot workflow used. Docs files (CLAUDE.md, DECISIONS, BLOCKERS, FEATURE_MATRIX, SOURCES, phase prompts) still to write. |
-| 01 App shell & CI | Next.js 16 + TS + Tailwind, commands, CI | in progress | Pinned deps, configs, layout/header/footer done; CI workflow + lint pending. |
-| 02 DB, auth, storage | Migrations, RLS, roles, sessions, invites | done (local) | 0001/0002 migrations; pp_public role + public_* views; scrypt + DB sessions; blobs in Postgres (≤6 MB). Tested in tests/db. Supabase not configured (blocked externally). |
-| 03 Real corpus | Connectors, rights, dedupe, import | done (snapshot) | 99 real items imported idempotently (NSIDC, PANGAEA, NASA, Commons, Wikipedia, NOAA/NASA pages, OpenAlex, CC-BY PDFs, NCPOR link-only). |
-| 04 Search & evidence (F1) | Extraction, search, Ask | in progress | Search + extractive/LLM ask + validators done; /ask UI + 30-query benchmark pending. |
-| 05 Data stories (F2) | Calcs, chart, recipe, export | in progress | Engine + SQL cross-check test done; UI/exports pending. |
-| 06 Studio (F4, F7) | Rights checks, EN/HI, invariants, fact diff | in progress | Services + tests done; UI pending. |
-| 07 Review & publish (F10) | State machine, outbox, receipts, QR, ZIP | in progress | Services + idempotency tests done; receipts/QR/ZIP/RSS UI pending. |
-| 08 Corrections (F3) | Propagation, race blocking | in progress | Services + tests done; UI pending. |
-| 09 Explorer & misconceptions (F5, F6) | Map/timeline, 4-state checker | in progress | Explore/map/timeline/expedition pages written; checker service done, UI pending. |
-| 10 Classroom & offline (F8, F9) | Investigations, teacher packs, SW | in progress | Services done; pages, service worker pending. |
-| 11 Security & verification | Audits, E2E, bundle scan | not started | |
-| 12 Release | README, runbook, deploy, handover | not started | Vercel deploy needs a Postgres DATABASE_URL (blocked until provided). |
+**Deployment:** https://polarpramaan-sih26063.vercel.app (Vercel project `polarpramaan-sih26063`, production), running as a **read-only snapshot preview** (DECISIONS D9). Live smoke test (`.github/workflows/live-smoke.yml`, run 36135848190) passed 23/23 checks at 2026-09-25T12:36:26Z.
+
+| Phase | Status | Evidence |
+|---|---|---|
+| 00 Preflight | done | Accounts verified; snapshot workflow; policy captures; docs and phase prompts (`docs/prompts/`) |
+| 01 Shell & CI | done | `.github/workflows/ci.yml` green on GitHub (lint, typecheck, tests, build, E2E, bundle scan) |
+| 02 DB/auth/storage | done (local), production DB blocked externally | Migrations, RLS, pp_public, invite-only sessions; tests in `tests/db` |
+| 03 Real corpus | done | 99 records, 2,608 observations, 95/95 hashes verified (`docs/SOURCES.md`) |
+| 04 Evidence (F1) | done | hit@5 17/20, citations 74/74, refusals 10/10 (`docs/EVALUATION.md`) |
+| 05 Data stories (F2) | done | SQL cross-check test; live CSV export verified |
+| 06 Studio (F4, F7) | done (local) | DB + E2E tests |
+| 07 Publish (F10) | done (local) | E2E: publish, QR decode, ZIP |
+| 08 Corrections (F3) | done (local) | DB + E2E tests |
+| 09 Explorer/checker (F5, F6) | done | Live smoke checks |
+| 10 Classroom/offline (F8, F9) | done | Live smoke checks; offline verified in E2E |
+| 11 Security & verification | done | 38 unit/DB + 9 E2E tests; SSRF/injection/auth tests; bundle scan clean; no production mocks |
+| 12 Release | done as a preview; full editorial deployment blocked on `DATABASE_URL` | README, SETUP, RUNBOOK, ARCHITECTURE, EVALUATION, DEMO |
+
+Next action when resuming: configure `DATABASE_URL` in Vercel (docs/SETUP.md), run migrate, bootstrap and admin:invite against it, redeploy, then run the live smoke test and the manual editorial demo (docs/DEMO.md) on the deployment.

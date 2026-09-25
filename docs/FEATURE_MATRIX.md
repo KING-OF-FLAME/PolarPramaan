@@ -2,6 +2,8 @@
 
 Status vocabulary: `not started` · `implemented` · `verified locally` · `verified deployed` · `blocked externally`.
 
+Live smoke test on the production URL passed 23/23 on 2026-09-25 (workflow run 36135848190).
+
 **"Verified deployed" for editorial features requires a persistent database.** The current Vercel deployment is a read-only snapshot preview (DECISIONS D9), so editorial features are verified locally (browser E2E against a production build) but not on the deployment.
 
 | ID | Feature | Status | Evidence | Remaining dependency |
