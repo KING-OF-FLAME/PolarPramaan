@@ -1,0 +1,31 @@
+name: Connectivity probe
+
+# Public-information probe: lists OpenRouter's free models and identifies the
+# Supabase pooler host for the project (using a deliberately wrong password).
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/probe.yml']
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: OpenRouter free models (public endpoint, no key)
+        run: |
+          curl -s https://openrouter.ai/api/v1/models | python3 -c "
+          import sys, json
+          d = json.load(sys.stdin)['data']
+          free = [m for m in d if m['id'].endswith(':free')]
+          for m in sorted(free, key=lambda m: -m.get('context_length', 0)):
+              sp = m.get('supported_parameters') or []
+              print(m['id'], m.get('context_length'), 'response_format' in sp, 'structured_outputs' in sp)
+          print('total free:', len(free))"
+      - name: Supabase pooler host
+        run: |
+          sudo apt-get install -y -qq postgresql-client >/dev/null 2>&1 || true
+          for h in aws-0-ap-south-1.pooler.supabase.com aws-1-ap-south-1.pooler.supabase.com; do
+            echo "== $h $(getent hosts $h | head -1)"
+            PGPASSWORD=wrong-password-probe PGCONNECT_TIMEOUT=10 psql "postgresql://polarpramaan_app.fqzdlvlscoxkzfolqahs@$h:6543/postgres?sslmode=require" -c 'select 1' 2>&1 | head -2
+          done
