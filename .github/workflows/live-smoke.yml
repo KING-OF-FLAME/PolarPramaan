@@ -1,0 +1,19 @@
+name: Live smoke test
+
+# Checks the deployed site from outside (fresh client, no cookies).
+on:
+  workflow_dispatch:
+    inputs:
+      base:
+        description: Base URL
+        default: https://polarpramaan-sih26063.vercel.app
+  push:
+    paths: ['.github/workflows/live-smoke.yml', 'scripts/live-smoke.sh']
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash scripts/live-smoke.sh "${{ inputs.base || 'https://polarpramaan-sih26063.vercel.app' }}"

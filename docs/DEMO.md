@@ -1,0 +1,10 @@
+# Five-minute demonstration script
+
+On the read-only preview, steps 1–3, 6 and parts of 5 run live. Steps 4–5 need the database-backed deployment or a local run (`pnpm dev` after `pnpm ingest:bootstrap`).
+
+1. **0:00 Real source.** Open `/explore?india=1`, then the Maitri station record: provider, coordinates from the source, CC BY-SA licence, retrieval time, version hash, and the evidence passages. Open an NCPOR page and show that it is link-only because of NCPOR's "All Rights Reserved" notice.
+2. **0:40 Reproduce a result.** `/data-stories` → "Arctic September minimum". Show the chart, table, missing-value handling, the near-real-time flag and the recipe. Download the CSV, the JSON and the verification script, then run `node verify-calculation.mjs rows.csv recipe.json`: all checks print OK.
+3. **1:30 Explain with evidence.** `/ask?q=What was the Arctic sea ice extent in September 2012?` → open the exact NSIDC row. Then ask "What is the population of Mumbai?": insufficient evidence, nothing generated.
+4. **2:15 Communicate responsibly.** Workspace → Draft Studio: compute the Arctic September calculation, add a Wikipedia passage and a Maitri photo, and generate an EN + HI school article. Show the fact-difference panel (all preserved). Try the Minister photo: refused, with Maitri alternatives. Edit a number: the machine check fails. A second reviewer approves both languages and publishes; open the story, the receipt and the QR, and download the ZIP.
+5. **3:15 One correction, every affected story.** Admin → Corrections → withdraw the NSIDC Northern Hemisphere version. The result shows both published versions noticed, scheduled items paused, the recorded Instagram post as a manual task and the offline pack marked stale. The story page shows the correction notice.
+6. **4:15 Reach and resilience.** `/offline/india-in-antarctica` → save, switch off the network, open the exhibit ("You are offline…"), reconnect to see the correction check. Finish with the measured outcomes in docs/EVALUATION.md.
