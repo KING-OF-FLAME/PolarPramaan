@@ -1,0 +1,37 @@
+SOURCE: https://help.openalex.org/access/
+RETRIEVED: 2026-09-25T11:23:31.449Z
+SHA256(raw): 728cbfab3f04ffd893533cb21a51bd6e98cfda6e0ab8844c8407991108e23680
+
+Access reference | OpenAlex Help Center OpenAlex Help 
+ Search help center… ⌘K 
+ Search runs on the deployed site — it’s unavailable in local dev.
+ Home Start Learn How-to Tutorials Reference Access Data API OpenAlex App 
+ Home 
+ Start 
+ How-to 
+ Tutorials 
+ Access 
+ Data 
+ API 
+ App 
+ Overview 
+ Querying Overview URL OQL 
+ Overview Specification 
+ OQO 
+ Products Overview Website 
+ Basic Advanced 
+ CLI Other agents AI agent connector Snapshot Sync Fulltext Unpaywall 
+ Pricing Overview Example costs Member Member+ Partner Legacy plans Buying & renewing 
+ Fixing errors Overview Works Authors Affiliations AI curation guide 
+ keys) and restore on the next load. Must be
+ is:inline and sit right after the markup: it then runs during HTML
+ parse, after the blocking stylesheets but before first paint, so the
+ restore never flickers. --> 
+ Access 
+ Access reference
+ Every way in and out of OpenAlex — how to ask questions, how to get the data, what it costs, and how to fix what’s wrong.
+ This reference is split into four sections:
+ Querying. The ways to ask OpenAlex a question — all transpile to the same query object.
+ Products. Every way to get the data — the website, a query, the CLI, an agent, the whole database, or Unpaywall.
+ Pricing. How paying for OpenAlex works — the free tier, pay-as-you-go, annual plans and their benefits, and the PDF sync add-on.
+ Fixing errors. How to report errors, fix them yourself, and get help.
