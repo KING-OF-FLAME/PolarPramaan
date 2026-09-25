@@ -105,7 +105,7 @@ function nsidc(h: 'N' | 'S', files: string[]): ExtractionResult {
         kind: 'table_row',
         text: r.raw,
         method: 'nsidc-csv-row',
-        heading: `${h === 'N' ? 'Arctic' : 'Antarctic'} monthly sea ice, ${MONTHS[r.month - 1]} ${r.year}`,
+        heading: `${h === 'N' ? 'Arctic' : 'Antarctic'} monthly sea-ice extent and area, ${MONTHS[r.month - 1]} ${r.year}`,
         rowKey: `${f.split('/').pop()}#${r.rowKey}`,
         columnNames: NSIDC_EXPECTED_HEADER,
       });

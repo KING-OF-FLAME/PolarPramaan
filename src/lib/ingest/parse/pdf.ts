@@ -3,7 +3,7 @@ import type { Chunk } from './chunk';
 
 export async function pdfPages(bytes: Uint8Array): Promise<string[]> {
   const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
-  const task = pdfjs.getDocument({ data: bytes, isEvalSupported: false, disableFontFace: true, useSystemFonts: false, verbosity: 0 });
+  const task = pdfjs.getDocument({ data: bytes, disableFontFace: true, useSystemFonts: false, verbosity: 0 });
   const doc = await task.promise;
   const pages: string[] = [];
   const maxPages = Math.min(doc.numPages, 120);

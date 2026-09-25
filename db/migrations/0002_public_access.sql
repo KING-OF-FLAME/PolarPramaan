@@ -49,7 +49,7 @@ create view public_records as
          r.source_published_at, r.india_specific, r.tags, r.archival, r.thumbnail_url, r.media_url, r.credit,
          r.updated_at,
          cr.status as rights_status, cr.license, cr.attribution, cr.policy_url, cr.decided_at as rights_decided_at,
-         cr.allow_download, cr.allow_quote, cr.allow_index_text, cr.allow_transform, cr.allow_republish_media,
+         cr.allow_download, cr.allow_quote, cr.allow_index_text, cr.allow_ai_processing, cr.allow_transform, cr.allow_republish_media,
          cr.allow_offline, cr.people_identifiable, cr.rationale as rights_rationale
   from records r
   join sources s on s.id = r.source_id
