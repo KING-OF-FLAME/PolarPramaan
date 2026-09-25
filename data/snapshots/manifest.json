@@ -578,20 +578,6 @@
     },
     {
       "provider": "wikipedia",
-      "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|revisions&explaintext=1&inprop=url&rvprop=ids|timestamp&redirects=1&titles=Himansh",
-      "path": "wikipedia/Himansh.json",
-      "retrievedAt": "2026-09-25T11:14:43.089Z",
-      "title": "Himansh",
-      "license": "CC BY-SA 4.0",
-      "status": 200,
-      "contentType": "application/json; charset=utf-8",
-      "finalUrl": "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|revisions&explaintext=1&inprop=url&rvprop=ids|timestamp&redirects=1&titles=Himansh",
-      "bytes": 363,
-      "ok": true,
-      "sha256": "dbb96937365cab6903affef7e94a46b56a0a3caa9ba0c610d801a8b343833323"
-    },
-    {
-      "provider": "wikipedia",
       "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|revisions&explaintext=1&inprop=url&rvprop=ids|timestamp&redirects=1&titles=Sea%20ice",
       "path": "wikipedia/Sea_ice.json",
       "retrievedAt": "2026-09-25T11:14:43.195Z",

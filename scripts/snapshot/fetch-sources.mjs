@@ -216,14 +216,13 @@ async function wikipedia() {
     'Dakshin Gangotri',
     'Indian Antarctic Program',
     'National Centre for Polar and Ocean Research',
-    'Himansh',
     'Sea ice',
     'Arctic sea ice decline',
     'Antarctic sea ice',
   ];
   for (const t of titles) {
     const url =
-      'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|revisions&explaintext=1&inprop=url&rvprop=ids|timestamp&redirects=1' +
+      'https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts|info|revisions|coordinates&explaintext=1&inprop=url&rvprop=ids|timestamp&redirects=1' +
       `&titles=${encodeURIComponent(t)}`;
     await grab('wikipedia', url, `wikipedia/${t.replace(/[^A-Za-z0-9]+/g, '_')}.json`, { title: t, license: 'CC BY-SA 4.0' });
   }
