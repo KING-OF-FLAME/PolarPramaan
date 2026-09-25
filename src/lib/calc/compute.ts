@@ -79,6 +79,14 @@ export async function computeRecipe(q: Queryable, input: unknown, opts: { public
     [recipe.sourceVersionId],
   );
   if (!src) throw new CalcError('Source version not available.');
+  // Record the effective period: clamp open-ended requests to the series' actual coverage.
+  const [cov] = await q.query<{ t0: string | null; t1: string | null }>(
+    `select to_char(min(obs_time) at time zone 'UTC', 'YYYY-MM-DD') t0, to_char(max(obs_time) at time zone 'UTC', 'YYYY-MM-DD') t1 from ${obsTable} where series_id = $1`,
+    [series.id],
+  );
+  if (cov?.t0 && recipe.periodStart < cov.t0) recipe.periodStart = cov.t0;
+  if (cov?.t1 && recipe.periodEnd > cov.t1) recipe.periodEnd = cov.t1;
+  if (recipe.periodStart > recipe.periodEnd) throw new CalcError('The selected period is outside the data coverage.');
   const obs = await q.query<{ row_key: string; t: string; value: number | null; raw_value: string; flag: string | null; lat: number | null; lon: number | null }>(
     `select row_key, to_char(obs_time at time zone 'UTC', 'YYYY-MM-DD') as t, value, raw_value, flag, lat, lon
        from ${obsTable}

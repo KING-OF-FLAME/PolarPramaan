@@ -140,8 +140,13 @@ export async function checkStatement(q: Queryable, statement: string): Promise<C
         const sign = tr ? Math.sign(tr.perDecade) : 0;
         const claimed = parsed.direction === 'up' ? 1 : -1;
         const recentVsEarly = (recent.result.stats.mean ?? 0) - (early.result.stats.mean ?? 0);
-        // Antarctic: long-term fit and recent behaviour can disagree, which is labelled "mixed" rather than forced.
-        const consistent = Math.sign(recentVsEarly) === sign;
+        // Earlier sub-period fit (all but the last decade): if it points the other way, the record changed direction.
+        const earlierEnd = `${new Date().getUTCFullYear() - 11}-12-31`;
+        const earlier = await computeRecipe(q, { seriesKey, sourceVersionId: sv, month: m, periodStart: '1979-01-01', periodEnd: earlierEnd, stats: ['trend'], excludeFlags: [] }, { publicOnly: true });
+        const etr = earlier.result.stats.trend;
+        const reversed = !!(etr && tr && Math.sign(etr.perDecade) !== Math.sign(tr.perDecade));
+        // Long-term fit and recent behaviour can disagree (notably in the Antarctic); that is labelled "mixed" rather than forced.
+        const consistent = Math.sign(recentVsEarly) === sign && !reversed;
         let assessment: Assessment;
         if (!tr) assessment = 'insufficient';
         else if (!consistent || Math.abs(tr.perDecade) < 0.05) assessment = 'mixed';
@@ -151,14 +156,15 @@ export async function checkStatement(q: Queryable, statement: string): Promise<C
           assessment,
           explanation: tr
             ? `For ${monthName(m)} (${parsed.month ? 'as stated' : 'the usual seasonal ' + (parsed.region === 'arctic' ? 'minimum' : 'minimum') + ' month, since no month was given'}), a least-squares line over ${tr.n} years changes by ${tr.perDecade >= 0 ? '+' : '−'}${fmt(Math.abs(tr.perDecade), 'million km²')} per decade. The mean of the last decade is ${fmt(recent.result.stats.mean, 'million km²')}, against ${fmt(early.result.stats.mean, 'million km²')} for 1979–1988.` +
-              (assessment === 'mixed' ? ' The long-term fit and the recent decade point in different directions, or the change is very small, so neither "increasing" nor "decreasing" describes the whole record well.' : '')
+              (etr ? ` Up to ${earlierEnd.slice(0, 4)} alone, the fitted change was ${etr.perDecade >= 0 ? '+' : '−'}${fmt(Math.abs(etr.perDecade), 'million km²')} per decade.` : '') +
+              (assessment === 'mixed' ? ' The earlier period, the full record and the recent decade do not all point the same way (or the change is very small), so neither "increasing" nor "decreasing" describes the whole record.' : '')
             : 'Not enough data to compute a trend.',
           evidence: [{ kind: 'calculation', label: `${regionName} ${monthName(m)} extent, NSIDC G02135 v4`, detail: `trend over ${full.result.n} values; recent mean n=${recent.result.n}; 1979–1988 mean n=${early.result.n}` }],
         });
         if (assessment === 'contradicted' || assessment === 'mixed') {
           rewrite = `${regionName} ${monthName(m)} sea-ice extent in the satellite record (NSIDC v4) has a fitted change of ${tr!.perDecade >= 0 ? '+' : '−'}${fmt(Math.abs(tr!.perDecade), 'million km²')} per decade since 1979. The last decade averaged ${fmt(recent.result.stats.mean, 'million km²')}.`;
         }
-        if (parsed.years.length === 1 && !parsed.month) {
+        if (parsed.years.length === 1 && !parsed.month && !/\bsince\b|\bfrom\b/i.test(s)) {
           findings.push({ aspect: 'weather vs climate', assessment: 'mixed', explanation: 'A single year shows natural variability; one year alone does not establish or overturn a long-term trend.', evidence: [] });
         }
       }
