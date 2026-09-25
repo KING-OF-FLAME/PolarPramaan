@@ -2,8 +2,8 @@
 
 | # | Blocker | Effect | Exact action needed |
 |---|---|---|---|
-| B1 | No persistent PostgreSQL configured for the Vercel project | The deployment is a read-only preview; editorial workflow (F3, F7, F10 publishing) is verified locally only | Create a Supabase (or Neon) database. Set `DATABASE_URL` (pooler URI), `NEXT_PUBLIC_APP_URL` and `CRON_SECRET` in Vercel. Run `pnpm db:migrate && pnpm ingest:bootstrap && pnpm admin:invite ...` against it, then redeploy (see docs/SETUP.md) |
-| B2 | No AI provider key | Ask with Evidence uses extractive answers only (a working, truthful mode) | Optional: set `LLM_API_KEY` and `LLM_MODEL` (e.g. `claude-opus-5`) |
+| B1 | ~~No persistent PostgreSQL~~ **Resolved 2026-09-25** | Supabase project `polarpramaan-sih26063` (ap-south-1) with a dedicated `polarpramaan_app` role; the build migrates and imports the snapshot | None |
+| B2 | ~~No AI provider key~~ **Resolved 2026-09-25** | OpenRouter, free models only (`LLM_MODEL` must end in `:free`; anything else is refused in code). Free-tier rate limits apply; when the provider is busy, Ask says so and shows the retrieved evidence without a substitute answer | Rotate the OpenRouter key if it was ever shared in plain text |
 | B3 | Hindi language review | Hindi variants cannot be published until a human language reviewer approves them in the workspace | A competent Hindi reviewer with the `reviewer` role |
 | B4 | NCPOR full-text rights | Indian expedition and annual reports are link-only | Written permission from NCPOR for specific documents; then upload them via Catalog Review and record the rights decision |
 | B5 | Social platform posting | Channels show "not connected" | Platform accounts, API credentials and explicit authorisation. Until then, use the export kit and record posts manually |
