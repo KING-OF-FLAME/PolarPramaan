@@ -35,7 +35,7 @@ jobs:
         # A push re-runs only the step(s) listed here; workflow_dispatch can refresh any/all.
         run: node scripts/snapshot/fetch-sources.mjs --only="$ONLY"
         env:
-          ONLY: ${{ github.event_name == 'push' && 'policies' || inputs.only }}
+          ONLY: ${{ github.event_name == 'push' && 'policies,ncpor' || inputs.only }}
       - name: Commit snapshot
         run: |
           git config user.name "polarpramaan-snapshot-bot"

@@ -279,7 +279,7 @@ async function ncpor() {
     const rel = m.links.filter((l) => /antarc|arctic|himal|maitri|bharati|himadri|expedition|southern ocean|cryosphere|station|report/i.test(l.text + ' ' + l.href) && /ncpor\.res\.in/.test(l.href));
     const seen = new Set();
     for (const l of rel) {
-      if (seen.has(l.href) || seen.size >= 30) continue;
+      if (seen.has(l.href) || seen.size >= 120) continue;
       seen.add(l.href);
       if (/\.(pdf|docx?|xlsx?|zip)$/i.test(l.href)) {
         out.push({ url: l.href, linkText: l.text, foundOn: r.finalUrl, kind: 'file-link', fetched: false });
@@ -289,6 +289,13 @@ async function ncpor() {
       if (!p) continue;
       const pm = extractMeta(p.buf.toString('utf8'), p.finalUrl);
       out.push({ url: p.finalUrl, linkText: l.text, foundOn: r.finalUrl, retrievedAt: new Date().toISOString(), sha256: sha256(p.buf), title: pm.title, description: pm.description, headings: pm.headings });
+      // Second level: record (never download) document links such as expedition reports.
+      for (const dl of pm.links) {
+        if (!/\.(pdf|docx?)$/i.test(dl.href) || !/ncpor\.res\.in/.test(dl.href) || seen.has(dl.href)) continue;
+        if (!/expedition|isea|antarc|arctic|himal|report|southern|cruise|station/i.test(dl.text + ' ' + dl.href)) continue;
+        seen.add(dl.href);
+        out.push({ url: dl.href, linkText: dl.text, foundOn: p.finalUrl, kind: 'file-link', fetched: false });
+      }
     }
   }
   await save('ncpor/pages-metadata.json', Buffer.from(JSON.stringify(out, null, 2)));
